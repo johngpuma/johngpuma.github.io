@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>John Pumayalli</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0d1117;
+      --navy-2: #161b22;
+      --navy-3: #21262d;
+      --border: rgba(255,255,255,0.08);
+      --teal: #2dd4bf;
+      --teal-dim: rgba(45,212,191,0.12);
+      --text-primary: #f0f6fc;
+      --text-secondary: #8b949e;
+      --text-muted: #484f58;
+      --mono: 'IBM Plex Mono', monospace;
+      --sans: 'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy);
+      color: var(--text-primary);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem;
+      height: 56px;
+      background: rgba(13,17,23,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 14px;
+      color: var(--teal);
+      letter-spacing: 0.03em;
+    }
+    .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+    .nav-links a {
+      font-size: 13px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--text-primary); }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
+
+    section { padding: 5rem 0; }
+    section + section { border-top: 1px solid var(--border); }
+
+    /* ── HERO ── */
+    #hero { padding: 9rem 0 5rem; }
+    .hero-eyebrow {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--teal);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 3.6rem);
+      font-weight: 300;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+    }
+    h1 strong { font-weight: 600; }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      max-width: 540px;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+    .hero-links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.5rem 1.1rem;
+      font-size: 13px;
+      font-family: var(--sans);
+      border-radius: 6px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.15s;
+      border: 1px solid var(--border);
+    }
+    .btn-primary {
+      background: var(--teal);
+      color: #0d1117;
+      border-color: var(--teal);
+      font-weight: 600;
+    }
+    .btn-primary:hover { background: #5eead4; }
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-secondary);
+    }
+    .btn-ghost:hover { background: var(--navy-3); color: var(--text-primary); border-color: rgba(255,255,255,0.15); }
+
+    /* ── SECTION HEADERS ── */
+    .section-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--teal);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    h2 {
+      font-size: 1.6rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── PROJECTS ── */
+    .projects-grid { display: grid; gap: 1.25rem; }
+
+    .project-card {
+      background: var(--navy-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .project-card:hover {
+      border-color: rgba(45,212,191,0.3);
+      transform: translateY(-2px);
+    }
+    .project-card.featured {
+      border-color: rgba(45,212,191,0.2);
+      background: linear-gradient(135deg, var(--navy-2) 70%, rgba(45,212,191,0.04));
+    }
+
+    .project-header {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      gap: 1rem; margin-bottom: 0.75rem;
+    }
+    .project-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .project-tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .tag-featured { background: var(--teal-dim); color: var(--teal); border: 1px solid rgba(45,212,191,0.2); }
+    .tag-work { background: rgba(139,92,246,0.12); color: #c4b5fd; border: 1px solid rgba(139,92,246,0.2); }
+
+    .project-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.25rem;
+      line-height: 1.65;
+    }
+
+    /* stat row for Catan paper */
+    .stat-row {
+      display: flex; gap: 1rem; margin-bottom: 1.25rem; flex-wrap: wrap;
+    }
+    .stat-pill {
+      background: var(--navy-3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.6rem 1rem;
+      text-align: center;
+    }
+    .stat-value {
+      font-family: var(--mono);
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--teal);
+      display: block;
+    }
+    .stat-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+
+    .tech-list { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.1rem; }
+    .tech-chip {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      background: var(--navy-3);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2px 7px;
+    }
+    .project-links { display: flex; gap: 0.6rem; }
+
+    /* ── EXPERIENCE ── */
+    .exp-item { display: grid; grid-template-columns: 1fr auto; gap: 0.25rem 1rem; margin-bottom: 2rem; }
+    .exp-item:last-child { margin-bottom: 0; }
+    .exp-role { font-weight: 500; font-size: 0.95rem; }
+    .exp-date { font-family: var(--mono); font-size: 12px; color: var(--text-muted); text-align: right; padding-top: 2px; }
+    .exp-org { color: var(--teal); font-size: 0.9rem; margin-bottom: 0.4rem; }
+    .exp-desc { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.65; grid-column: 1 / -1; }
+
+    /* ── EDUCATION ── */
+    .edu-block {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 1rem; margin-bottom: 1rem;
+    }
+    .edu-school { font-weight: 500; font-size: 0.95rem; }
+    .edu-degree { font-size: 0.88rem; color: var(--text-secondary); margin-top: 2px; }
+    .edu-meta { font-family: var(--mono); font-size: 12px; color: var(--text-muted); text-align: right; white-space: nowrap; }
+    .edu-courses {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+      line-height: 1.6;
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
+    .skill-group-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .skill-tag {
+      font-size: 12px;
+      color: var(--text-secondary);
+      background: var(--navy-3);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 3px 8px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2.5rem 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      nav { padding: 0 1.25rem; }
+      .nav-links { gap: 1rem; }
+      .container { padding: 0 1.25rem; }
+      .project-header { flex-direction: column; gap: 0.5rem; }
+      .edu-block { flex-direction: column; gap: 0.25rem; }
+      .edu-meta { text-align: left; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .project-card { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">jp</span>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#skills">Skills</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <p class="hero-eyebrow">CS + AI @ Stanford</p>
+    <h1><strong>John Pumayalli</strong><br>Building at the edge<br>of systems and intelligence.</h1>
+    <p class="hero-sub">
+      Stanford undergrad (BS Symbolic Systems, AI concentration) — writing code that thinks, models that explain themselves, and infrastructure that holds it all together.
+    </p>
+    <div class="hero-links">
+      <a class="btn btn-primary" href="John_Pumayalli_Resume.pdf" download>↓ Resume</a>
+      <a class="btn btn-ghost" href="mailto:johnpuma@stanford.edu">Email</a>
+      <a class="btn btn-ghost" href="https://linkedin.com/in/johnpumayalli" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="btn btn-ghost" href="https://github.com/johnpuma" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <p class="section-label">Work</p>
+    <h2>Projects</h2>
+
+    <div class="projects-grid">
+
+      <!-- Saplinghq -->
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-title">Org Intelligence Pipeline — OrgOS</span>
+          <span class="project-tag tag-work">Current</span>
+        </div>
+        <p class="project-desc">
+          Building a production Python pipeline that ingests Slack workspace data from NeonDB and uses an LLM (Gemini 2.5 Flash via OpenRouter) to infer organizational structure — extracting actors, roles, seniority scores, team groupings, and an org summary from thousands of messages. Deployed on GCP with Secret Manager for secure environment handling and CI/CD via GitHub Actions.
+        </p>
+        <div class="tech-list">
+          <span class="tech-chip">Python</span>
+          <span class="tech-chip">NeonDB / PostgreSQL</span>
+          <span class="tech-chip">Gemini 2.5 Flash</span>
+          <span class="tech-chip">OpenRouter</span>
+          <span class="tech-chip">GCP</span>
+          <span class="tech-chip">GitHub Actions</span>
+          <span class="tech-chip">Terraform</span>
+        </div>
+      </div>
+
+      <!-- CS229 Catan -->
+      <div class="project-card featured">
+        <div class="project-header">
+          <span class="project-title">Beyond Pip Counting: Interpretable ML for Catan Opening Placement</span>
+          <span class="project-tag tag-featured">CS229</span>
+        </div>
+        <p class="project-desc">
+          Investigated whether supervised learning can beat the dominant "pip-counting" heuristic for predicting Settlers of Catan win outcomes, using ~100K simulated games. Engineered 52 features across resource scarcity, opponent competition, turn order, and strategic engines — then distilled XGBoost predictions into eight human-readable rules that recover 62% of the model's edge.
+        </p>
+        <div class="stat-row">
+          <div class="stat-pill">
+            <span class="stat-value">0.73</span>
+            <span class="stat-label">Model AUC</span>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-value">0.54</span>
+            <span class="stat-label">Pip-only AUC</span>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-value">~100K</span>
+            <span class="stat-label">Simulated games</span>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-value">62%</span>
+            <span class="stat-label">Edge in 8 rules</span>
+          </div>
+        </div>
+        <div class="tech-list">
+          <span class="tech-chip">Python</span>
+          <span class="tech-chip">XGBoost</span>
+          <span class="tech-chip">Logistic Regression</span>
+          <span class="tech-chip">MLP</span>
+          <span class="tech-chip">SHAP</span>
+          <span class="tech-chip">k-means</span>
+          <span class="tech-chip">Catanatron</span>
+        </div>
+        <div class="project-links">
+          <a class="btn btn-ghost" href="CS229__Project_Final_Report__1_.pdf" target="_blank">Read paper ↗</a>
+        </div>
+      </div>
+
+      <!-- Flourish -->
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-title">Health Data Visualization App — Flourish</span>
+          <span class="project-tag tag-work">Internship</span>
+        </div>
+        <p class="project-desc">
+          Built the front end of a health-tracking app for people with chronic conditions, enabling patients to visualize longitudinal health data and share insights with physicians. Worked closely with the UI/UX team to design the interface and constructed the backend data layer.
+        </p>
+        <div class="tech-list">
+          <span class="tech-chip">React Native</span>
+          <span class="tech-chip">Node.js</span>
+          <span class="tech-chip">MongoDB</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <p class="section-label">Background</p>
+    <h2>Experience</h2>
+
+    <div class="exp-item">
+      <div class="exp-role">Software Engineer Intern</div>
+      <div class="exp-date">Jun 2025 – Present</div>
+      <div class="exp-org">OrgOS</div>
+      <div class="exp-desc">Building AI/ML pipelines for organizational intelligence — from Slack ingestion and LLM inference to GCP deployment and CI/CD automation.</div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-role">Camp Counselor</div>
+      <div class="exp-date">Jun – Sep 2025</div>
+      <div class="exp-org">Stanford Sierra Camp · South Lake Tahoe, CA</div>
+      <div class="exp-desc">Designed and led daily programming for 300+ weekly guests across a 13-week season; built communication skills with a Stanford alumni network.</div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-role">Front End Developer</div>
+      <div class="exp-date">Jun – Sep 2022</div>
+      <div class="exp-org">Flourish · Dartmouth, NH</div>
+      <div class="exp-desc">Built the patient-facing interface of a chronic-condition health tracking app using React Native, Node.js, and MongoDB.</div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-role">Research Assistant</div>
+      <div class="exp-date">Jun – Sep 2021</div>
+      <div class="exp-org">Colorado School of Mines · Golden, CO</div>
+      <div class="exp-desc">Reverse-engineered Grammarly with a research team under Dr. Chuan Yue, identifying privacy vulnerabilities and cybersecurity issues.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <p class="section-label">Academic</p>
+    <h2>Education</h2>
+
+    <div class="edu-block">
+      <div>
+        <div class="edu-school">Stanford University</div>
+        <div class="edu-degree">BS Symbolic Systems — AI & Robotics Concentration · GPA 3.61</div>
+        <div class="edu-courses">
+          Selected coursework: Machine Learning (CS229) · Algorithms · Probability · Mathematical Logic · Computer Organization · Philosophy of AI · Minds & Machines · Semantics & Pragmatics
+        </div>
+      </div>
+      <div class="edu-meta">Expected Jun 2027<br>Stanford, CA</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <p class="section-label">Toolkit</p>
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <div>
+        <div class="skill-group-label">Languages</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">C++</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">Java</span>
+          <span class="skill-tag">Swift</span>
+          <span class="skill-tag">HTML/CSS</span>
+          <span class="skill-tag">SQL</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-label">ML / AI</div>
+        <div class="skill-tags">
+          <span class="skill-tag">XGBoost</span>
+          <span class="skill-tag">scikit-learn</span>
+          <span class="skill-tag">SHAP</span>
+          <span class="skill-tag">LLM APIs</span>
+          <span class="skill-tag">OpenRouter</span>
+          <span class="skill-tag">Gemini</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-label">Infrastructure</div>
+        <div class="skill-tags">
+          <span class="skill-tag">GCP</span>
+          <span class="skill-tag">GitHub Actions</span>
+          <span class="skill-tag">Terraform</span>
+          <span class="skill-tag">PostgreSQL</span>
+          <span class="skill-tag">NeonDB</span>
+          <span class="skill-tag">MongoDB</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-label">Frameworks</div>
+        <div class="skill-tags">
+          <span class="skill-tag">React</span>
+          <span class="skill-tag">React Native</span>
+          <span class="skill-tag">Node.js</span>
+          <span class="skill-tag">Figma</span>
+          <span class="skill-tag">CAD</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    johnpuma@stanford.edu · built by John Pumayalli · 2026
+  </div>
+</footer>
+
+</body>
+</html>
