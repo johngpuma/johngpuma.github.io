@@ -304,7 +304,7 @@
     <p class="hero-eyebrow">CS + AI @ Stanford</p>
     <h1><strong>John Pumayalli</strong><br>Building at the edge<br>of systems and intelligence.</h1>
     <p class="hero-sub">
-      Stanford undergrad (BS Symbolic Systems, AI concentration) — writing code that thinks, models that explain themselves, and infrastructure that holds it all together.
+      Stanford coterminal student (BS Symbolic Systems, AI concentration; MS Computer Science, AI specialization) — writing code that thinks, models that explain themselves, and infrastructure that holds it all together. Looking for Summer 2027 machine learning engineering internships.
     </p>
     <div class="hero-links">
       <a class="btn btn-primary" href="John_Pumayalli_Resume.pdf" download>↓ Resume</a>
@@ -330,7 +330,7 @@
           <span class="project-tag tag-work">Current</span>
         </div>
         <p class="project-desc">
-          OrgOS reads a company's Slack and meeting transcripts and turns them into workstreams, decisions and owners. I build and run its Google Cloud infrastructure across dev, production and a Stanford research environment: Cloud Run services, a PostgreSQL store with per-company row-level security, per-company encryption keys, and de-identification before anything is stored. I also built the release pipeline, which promotes the exact images dev is running, checks the schema before rolling, and verifies the copy, and led a measured cost audit of the always-on services.
+          OrgOS reads a company's Slack and meeting transcripts and turns them into workstreams, decisions and owners. I build and run its Google Cloud infrastructure across dev, production and a Stanford research environment: Cloud Run services, a PostgreSQL store with per-company row-level security, per-company encryption keys, and de-identification before anything is stored. I also built per-pull-request preview environments, where each PR runs its own backend, AI agent and frontend on an isolated, sanitized database clone; the release pipeline, which promotes the exact images dev is running, checks the schema before rolling, and verifies the copy; and led a measured cost audit of the always-on services.
         </p>
         <div class="tech-list">
           <span class="tech-chip">Python</span>
@@ -429,6 +429,23 @@
         </div>
       </div>
 
+      <!-- COMM 324 paper -->
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-title">Talking to the Machine Teammate</span>
+          <span class="project-tag tag-featured">Research</span>
+        </div>
+        <p class="project-desc">
+          Research paper for COMM 324 with Prof. Jeff Hancock on how human code reviewers treat AI coding agents. Analyzed 7.7M agent-authored pull requests across 2,800+ GitHub repositories in Python. Agent-authored PRs merge 6.4 points less often than human PRs (p = .008), and most of that gap comes from agents that post under bot accounts.
+        </p>
+        <div class="tech-list">
+          <span class="tech-chip">Python</span>
+          <span class="tech-chip">pandas</span>
+          <span class="tech-chip">GitHub API</span>
+          <span class="tech-chip">Statistical analysis</span>
+        </div>
+      </div>
+
       <!-- Flourish -->
       <div class="project-card">
         <div class="project-header">
@@ -436,7 +453,7 @@
           <span class="project-tag tag-work">Internship</span>
         </div>
         <p class="project-desc">
-          Built the front end of a health-tracking app for people with chronic conditions, enabling patients to visualize longitudinal health data and share insights with physicians. Worked closely with the UI/UX team to design the interface and constructed the backend data layer.
+          Built the front end of a mobile app that helps people with chronic conditions track their health data and share it with doctors, using data visualization and machine learning. Worked with the UI/UX team on the interface and contributed to the backend.
         </p>
         <div class="tech-list">
           <span class="tech-chip">React Native</span>
@@ -456,46 +473,61 @@
     <h2>Experience</h2>
 
     <div class="exp-item">
-      <div class="exp-role">Software Engineer Intern</div>
+      <div class="exp-role">Software Engineer and Research Assistant</div>
       <div class="exp-date">Mar 2026 – Present</div>
-      <div class="exp-org">OrgOS · Stanford, CA</div>
-      <div class="exp-desc">Building and running the Google Cloud infrastructure for an organizational intelligence platform: Slack and meeting ingestion with de-identification before storage, LLM analysis, Terraform-managed dev, production and research environments, and CI/CD release automation.</div>
+      <div class="exp-org">Stanford Graduate School of Business · Stanford, CA</div>
+      <div class="exp-desc">Software engineer and research assistant to Prof. Julien Clement (Macro Organizational Behavior) on OrgOS, an LLM pipeline that maps a company's teams, workstreams, and decisions from its Slack conversations. Build and run the platform on Google Cloud (Cloud Run, Postgres with pgvector, KMS), managed with Terraform across development, production, and research environments; built per-pull-request preview environments in GitHub Actions; hardened production access so customer data stays private; and led cost and performance work across the stack.</div>
     </div>
 
     <div class="exp-item">
-      <div class="exp-role">Camp Counselor</div>
+      <div class="exp-role">Section Leader, Probability for AI</div>
+      <div class="exp-date">Oct 2026 – Present</div>
+      <div class="exp-org">Stanford University · Remote</div>
+      <div class="exp-desc">Lead a weekly live section of Probability for AI, a free Stanford course taught by Chris Piech and Mehran Sahami that teaches the mathematics behind modern AI to learners around the world.</div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-role">Counselor</div>
       <div class="exp-date">Jun – Sep 2025</div>
       <div class="exp-org">Stanford Sierra Camp · South Lake Tahoe, CA</div>
-      <div class="exp-desc">Designed and led daily programming for 300+ weekly guests across a 13-week season; built communication skills with a Stanford alumni network.</div>
+      <div class="exp-desc">Designed and led daily programming for 300+ guests per week over a 13-week season.</div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-role">Assistant / IT</div>
+      <div class="exp-date">Summers 2021 – 2024</div>
+      <div class="exp-org">Telluride Science &amp; Innovation Center · Telluride, CO</div>
+      <div class="exp-desc">Supported visiting researchers and staff with computer and network setup, troubleshooting, and meeting logistics during summer research workshops, and attended interdisciplinary workshops led by leading scientists.</div>
     </div>
 
     <div class="exp-item">
       <div class="exp-role">Front End Developer</div>
       <div class="exp-date">Jun – Sep 2022</div>
       <div class="exp-org">Flourish · Dartmouth, NH</div>
-      <div class="exp-desc">Built the patient-facing interface of a chronic-condition health tracking app using React Native, Node.js, and MongoDB.</div>
+      <div class="exp-desc">Built the front end of a mobile app that helps people with chronic conditions track their health data and share it with doctors. Worked with the UI/UX team and contributed to the backend in React Native, Node.js, and MongoDB.</div>
     </div>
 
     <div class="exp-item">
       <div class="exp-role">Research Assistant</div>
       <div class="exp-date">Jun – Sep 2021</div>
       <div class="exp-org">Colorado School of Mines · Golden, CO</div>
-      <div class="exp-desc">Reverse-engineered Grammarly with a research team under Dr. Chuan Yue, identifying privacy vulnerabilities and cybersecurity issues.</div>
+      <div class="exp-desc">Reverse-engineered the Grammarly browser extension with a student team under Dr. Chuan Yue, identifying and evaluating privacy breaches and cybersecurity vulnerabilities.</div>
     </div>
 
     <p class="section-label" style="margin-top:2.5rem">Leadership &amp; Activities</p>
 
     <div class="exp-item">
-      <div class="exp-role">Social Chair &amp; Head of Member Development</div>
+      <div class="exp-role">Alumni Chair</div>
       <div class="exp-date">Sep 2024 – Present</div>
       <div class="exp-org">Sigma Phi Epsilon · Stanford, CA</div>
+      <div class="exp-desc">Formerly Social Chair and Head of Member Development.</div>
     </div>
 
     <div class="exp-item">
       <div class="exp-role">Member &amp; Performer</div>
-      <div class="exp-date">Sep 2012 – Present</div>
+      <div class="exp-date">2012 – Present</div>
       <div class="exp-org">Mestiza Qoyllacha · Sacred Valley, Peru</div>
-      <div class="exp-desc">Annual collaborator with an Indigenous dance collective in the Sacred Valley of Peru; developed cross-cultural communication and teamwork.</div>
+      <div class="exp-desc">Perform each year with an Indigenous dance collective in Peru's Sacred Valley, building cross-cultural communication and teamwork.</div>
     </div>
 
   </div>
@@ -510,9 +542,17 @@
     <div class="edu-block">
       <div>
         <div class="edu-school">Stanford University</div>
-        <div class="edu-degree">BS Symbolic Systems — AI & Robotics Concentration · GPA 3.61</div>
+        <div class="edu-degree">MS Computer Science (Coterminal) — Artificial Intelligence Specialization</div>
+      </div>
+      <div class="edu-meta">Expected Mar 2028<br>Stanford, CA</div>
+    </div>
+
+    <div class="edu-block">
+      <div>
+        <div class="edu-school">Stanford University</div>
+        <div class="edu-degree">BS Symbolic Systems — Artificial Intelligence Concentration · GPA 3.61</div>
         <div class="edu-courses">
-          Selected coursework: Machine Learning (CS229) · Algorithms · Mathematical Foundations · Probability · Mathematical Logic · Computer Organization · Philosophy of AI · Minds & Machines · Semantics & Pragmatics
+          Selected coursework: Machine Learning (CS 229) · Artificial Intelligence (CS 221) · Decision Making under Uncertainty (CS 238) · Design and Analysis of Algorithms (CS 161) · Probability for Computer Scientists (CS 109) · Mathematical Foundations · Mathematical Logic · Computer Organization · Philosophy of AI · Minds &amp; Machines · Semantics &amp; Pragmatics
         </div>
       </div>
       <div class="edu-meta">Expected Jun 2027<br>Stanford, CA</div>
@@ -545,6 +585,7 @@
           <span class="skill-tag">Swift</span>
           <span class="skill-tag">HTML/CSS</span>
           <span class="skill-tag">SQL</span>
+          <span class="skill-tag">Bash</span>
         </div>
       </div>
       <div>
@@ -561,9 +602,9 @@
           <span class="skill-tag">XGBoost</span>
           <span class="skill-tag">scikit-learn</span>
           <span class="skill-tag">SHAP</span>
-          <span class="skill-tag">LLM APIs</span>
-          <span class="skill-tag">OpenRouter</span>
-          <span class="skill-tag">Gemini 2.5</span>
+          <span class="skill-tag">pandas</span>
+          <span class="skill-tag">NumPy</span>
+          <span class="skill-tag">LLM APIs (Gemini, Claude, Vertex AI)</span>
           <span class="skill-tag">Logistic regression</span>
           <span class="skill-tag">k-means</span>
         </div>
@@ -571,11 +612,11 @@
       <div>
         <div class="skill-group-label">Infrastructure</div>
         <div class="skill-tags">
-          <span class="skill-tag">GCP</span>
-          <span class="skill-tag">GitHub Actions</span>
+          <span class="skill-tag">Google Cloud (Cloud Run, Cloud SQL, KMS, IAM)</span>
           <span class="skill-tag">Terraform</span>
-          <span class="skill-tag">PostgreSQL</span>
-          <span class="skill-tag">NeonDB</span>
+          <span class="skill-tag">GitHub Actions</span>
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">PostgreSQL / pgvector</span>
           <span class="skill-tag">MongoDB</span>
         </div>
       </div>
