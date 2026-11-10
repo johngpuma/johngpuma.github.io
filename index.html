@@ -352,6 +352,25 @@
       color: var(--text-3);
     }
 
+    .points {
+      list-style: none;
+      display: grid; gap: 0.5rem;
+      margin: -0.35rem 0 1.35rem;
+    }
+    .points li {
+      position: relative;
+      padding-left: 1.1rem;
+      font-size: 0.9rem;
+      color: var(--text-2);
+      line-height: 1.6;
+    }
+    .points li::before {
+      content: ""; position: absolute; left: 0; top: 0.62em;
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--accent);
+    }
+    .exp-item .points { grid-column: 1 / -1; margin: 0.6rem 0 0; max-width: 720px; }
+
     .tech-list { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.2rem; }
     .project-card .tech-list:last-child { margin-bottom: 0; }
     .tech-chip {
@@ -408,12 +427,15 @@
       font-family: var(--mono); font-size: 12px; color: var(--text-3);
       text-align: right; white-space: nowrap; line-height: 1.7;
     }
-    .edu-courses {
-      font-size: 0.86rem;
-      color: var(--text-3);
-      margin-top: 0.6rem;
-      line-height: 1.7;
-      max-width: 680px;
+    .edu-courses { margin-top: 0.9rem; }
+    .edu-courses-label {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--text-3); margin-bottom: 0.5rem;
+    }
+    .course-list { display: flex; flex-wrap: wrap; gap: 0.35rem; list-style: none; }
+    .course-list li {
+      font-size: 12.5px; color: var(--text-2);
+      background: var(--surface-2); border-radius: 6px; padding: 3px 9px;
     }
 
     /* ── SKILLS ── */
@@ -509,10 +531,10 @@
 <section id="hero">
   <div class="container hero-grid">
     <div>
-      <p class="hero-eyebrow">CS + AI @ Stanford</p>
-      <h1><strong>John Pumayalli</strong>Building at the edge of<br><em>systems</em> and <em>intelligence</em>.</h1>
+      <p class="hero-eyebrow">Stanford University</p>
+      <h1><strong>John Pumayalli</strong>Machine learning, and the<br>infrastructure it runs on.</h1>
       <p class="hero-sub">
-        Stanford coterminal student (BS Symbolic Systems, AI concentration; MS Computer Science, AI specialization) — writing code that thinks, models that explain themselves, and infrastructure that holds it all together.
+        I'm finishing a B.S. in Symbolic Systems and a coterminal M.S. in Computer Science at Stanford, both focused on AI. I run the Google Cloud platform for OrgOS, an LLM research pipeline at the Graduate School of Business, and I like ML projects where the model has to explain itself.
       </p>
       <div class="hero-links">
         <a class="btn btn-primary" href="John_Pumayalli_Resume.pdf" download>↓ Resume</a>
@@ -547,8 +569,14 @@
           <span class="project-tag tag-work">Current</span>
         </div>
         <p class="project-desc">
-          OrgOS reads a company's Slack and meeting transcripts and turns them into workstreams, decisions and owners. I build and run its Google Cloud infrastructure across dev, production and a Stanford research environment: Cloud Run services, a PostgreSQL store with per-company row-level security, per-company encryption keys, and de-identification before anything is stored. I also built per-pull-request preview environments, where each PR runs its own backend, AI agent and frontend on an isolated, sanitized database clone; the release pipeline, which promotes the exact images dev is running, checks the schema before rolling, and verifies the copy; and led a measured cost audit of the always-on services.
+          OrgOS turns a company's Slack and meeting transcripts into workstreams, decisions, and owners. I build and run its Google Cloud infrastructure across dev, production, and a Stanford research environment.
         </p>
+        <ul class="points">
+          <li>Cloud Run services on PostgreSQL, with per-company row-level security and encryption keys, and people de-identified before anything is stored</li>
+          <li>Per-pull-request preview environments: each PR gets its own backend, AI agent, and frontend on a sanitized database clone</li>
+          <li>A release pipeline that promotes the exact images dev is running, checks the schema before rolling, and verifies the copy</li>
+          <li>A measured cost audit of the always-on services</li>
+        </ul>
         <div class="tech-list">
           <span class="tech-chip">Python</span>
           <span class="tech-chip">Cloud Run</span>
@@ -567,8 +595,13 @@
           <span class="project-tag tag-featured">Research</span>
         </div>
         <p class="project-desc">
-          Symbolic Systems research poster, with the Stanford Graduate School of Business (Macro Organizational Behavior). Asks whether a small academic team can build a platform that lets a company of any size share its Slack and meeting data continuously while keeping it private. People are replaced with tokens before anything is stored, analysis and language models run only on de-identified data inside one university-controlled Google Cloud project, and real names come back only in the company's own dashboard, with every re-identification logged.
+          Symbolic Systems research poster with the Stanford Graduate School of Business (Macro Organizational Behavior). The question: can a small academic team let a company of any size share its Slack and meeting data continuously while keeping it private?
         </p>
+        <ul class="points">
+          <li>People are replaced with tokens before anything is stored</li>
+          <li>Analysis and language models see only de-identified data, inside one university-controlled Google Cloud project</li>
+          <li>Real names come back only in the company's own dashboard, and every re-identification is logged</li>
+        </ul>
         <div class="tech-list">
           <span class="tech-chip">Python</span>
           <span class="tech-chip">Cloud Run</span>
@@ -589,8 +622,13 @@
           <span class="project-tag tag-featured">Research</span>
         </div>
         <p class="project-desc">
-          Research paper for COMM 324 with Prof. Jeff Hancock on how human code reviewers treat AI coding agents. Analyzed 7.7M agent-authored pull requests across 2,800+ GitHub repositories in Python. Agent-authored PRs merge 6.4 points less often than human PRs (p = .008), and most of that gap comes from agents that post under bot accounts.
+          Research paper for COMM 324 (Prof. Jeff Hancock) on how human code reviewers treat AI coding agents.
         </p>
+        <ul class="points">
+          <li>Analyzed 7.7M agent-authored pull requests across 2,800+ GitHub repositories in Python</li>
+          <li>Agent-authored PRs merge 6.4 points less often than human PRs (p = .008)</li>
+          <li>Most of that gap comes from agents that post under bot accounts</li>
+        </ul>
         <div class="tech-list">
           <span class="tech-chip">Python</span>
           <span class="tech-chip">pandas</span>
@@ -606,8 +644,13 @@
           <span class="project-tag tag-featured">CS229</span>
         </div>
         <p class="project-desc">
-          Investigated whether supervised learning can beat the dominant "pip-counting" heuristic for predicting Settlers of Catan win outcomes, using ~100K simulated games. Engineered 52 features across resource scarcity, opponent competition, turn order, and strategic engines — then distilled XGBoost predictions into eight human-readable rules that recover 62% of the model's edge.
+          Can supervised learning beat the "pip-counting" heuristic at predicting who wins a game of Settlers of Catan from the opening placement? Trained on ~100K simulated games.
         </p>
+        <ul class="points">
+          <li>52 engineered features covering resource scarcity, opponent competition, turn order, and strategic engines</li>
+          <li>XGBoost, logistic regression, and an MLP compared against a pip-count baseline</li>
+          <li>SHAP explanations distilled into eight human-readable rules</li>
+        </ul>
         <div class="stat-row">
           <div class="stat-pill">
             <span class="stat-value">0.73</span>
@@ -648,8 +691,13 @@
           <span class="project-tag tag-featured">Side project</span>
         </div>
         <p class="project-desc">
-          A Chrome extension records 1v1 games by decoding Colonist.io's real-time WebSocket / MessagePack protocol, and a translator maps its 54-vertex, 72-edge board onto the Catanatron rules engine. The analyzer then replays the match and scores every decision by win probability using seeded Monte-Carlo rollouts, flagging statistically significant blunders and showing the move the engine would have made instead. Post-game only, with no live assistance.
+          Post-game review for 1v1 Colonist.io matches, with no live assistance.
         </p>
+        <ul class="points">
+          <li>A Chrome extension records games by decoding the site's WebSocket / MessagePack protocol</li>
+          <li>A translator maps its 54-vertex, 72-edge board onto the Catanatron rules engine</li>
+          <li>Seeded Monte Carlo rollouts score every decision by win probability, flag significant blunders, and show the move the engine would have made</li>
+        </ul>
         <div class="tech-list">
           <span class="tech-chip">JavaScript</span>
           <span class="tech-chip">Python</span>
@@ -670,8 +718,13 @@
           <span class="project-tag tag-work">Internship</span>
         </div>
         <p class="project-desc">
-          Built the front end of a mobile app that helps people with chronic conditions track their health data and share it with doctors, using data visualization and machine learning. Worked with the UI/UX team on the interface and contributed to the backend.
+          A mobile app that helps people with chronic conditions track their health data and share it with their doctors.
         </p>
+        <ul class="points">
+          <li>Built the front end, including data visualizations of each patient's health over time</li>
+          <li>Worked with the UI/UX team on the interface</li>
+          <li>Contributed to the Node.js and MongoDB backend</li>
+        </ul>
         <div class="tech-list">
           <span class="tech-chip">React Native</span>
           <span class="tech-chip">Node.js</span>
@@ -694,7 +747,12 @@
       <div class="exp-role">Software Engineer and Research Assistant</div>
       <div class="exp-date">Mar 2026 – Present</div>
       <div class="exp-org">Stanford Graduate School of Business · Stanford, CA</div>
-      <div class="exp-desc">Software engineer and research assistant to Prof. Julien Clement (Macro Organizational Behavior) on OrgOS, an LLM pipeline that maps a company's teams, workstreams, and decisions from its Slack conversations. Build and run the platform on Google Cloud (Cloud Run, Postgres with pgvector, KMS), managed with Terraform across development, production, and research environments; built per-pull-request preview environments in GitHub Actions; hardened production access so customer data stays private; and led cost and performance work across the stack.</div>
+      <div class="exp-desc">Research assistant to Prof. Julien Clement (Macro Organizational Behavior) on OrgOS, an LLM pipeline that maps a company's teams, workstreams, and decisions from its Slack conversations.</div>
+      <ul class="points">
+        <li>Build and run the platform on Google Cloud (Cloud Run, Postgres with pgvector, KMS), managed with Terraform across development, production, and research environments</li>
+        <li>Built per-pull-request preview environments in GitHub Actions</li>
+        <li>Hardened production access so customer data stays private, and led cost and performance work across the stack</li>
+      </ul>
     </div>
 
     <div class="exp-item current">
@@ -715,7 +773,7 @@
       <div class="exp-role">Assistant / IT</div>
       <div class="exp-date">Summers 2021 – 2024</div>
       <div class="exp-org">Telluride Science &amp; Innovation Center · Telluride, CO</div>
-      <div class="exp-desc">Supported visiting researchers and staff with computer and network setup, troubleshooting, and meeting logistics during summer research workshops, and attended interdisciplinary workshops led by leading scientists.</div>
+      <div class="exp-desc">Supported visiting researchers and staff with computer and network setup, troubleshooting, and meeting logistics during summer research workshops.</div>
     </div>
 
     <div class="exp-item">
@@ -776,7 +834,20 @@
         <div class="edu-school">Stanford University</div>
         <div class="edu-degree">BS Symbolic Systems — Artificial Intelligence Concentration · GPA 3.61</div>
         <div class="edu-courses">
-          Selected coursework: Machine Learning (CS 229) · Artificial Intelligence (CS 221) · Decision Making under Uncertainty (CS 238) · Design and Analysis of Algorithms (CS 161) · Probability for Computer Scientists (CS 109) · Mathematical Foundations · Mathematical Logic · Computer Organization · Philosophy of AI · Minds &amp; Machines · Semantics &amp; Pragmatics
+          <p class="edu-courses-label">Selected coursework</p>
+          <ul class="course-list">
+            <li>Machine Learning (CS 229)</li>
+            <li>Artificial Intelligence (CS 221)</li>
+            <li>Decision Making under Uncertainty (CS 238)</li>
+            <li>Design and Analysis of Algorithms (CS 161)</li>
+            <li>Probability for Computer Scientists (CS 109)</li>
+            <li>Mathematical Foundations</li>
+            <li>Mathematical Logic</li>
+            <li>Computer Organization</li>
+            <li>Philosophy of AI</li>
+            <li>Minds &amp; Machines</li>
+            <li>Semantics &amp; Pragmatics</li>
+          </ul>
         </div>
       </div>
       <div class="edu-meta">Expected Jun 2027<br>Stanford, CA</div>
