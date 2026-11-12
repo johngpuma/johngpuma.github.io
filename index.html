@@ -479,6 +479,112 @@
     footer a { color: var(--text-2); text-decoration: none; }
     footer a:hover { color: var(--accent); }
 
+    /* ── PUMA SPOTLIGHT ── */
+    :root { --bar: #0d9488; }
+    :root[data-theme="dark"] { --bar: #13a595; }
+    #puma {
+      position: relative;
+      background:
+        radial-gradient(700px 360px at 0% 0%, var(--accent-soft), transparent 70%),
+        var(--bg);
+    }
+    .spot-grid { margin-bottom: 2.5rem; }
+    .spot-title {
+      font-size: clamp(3rem, 7vw, 4.6rem);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+    .spot-kicker {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(1.3rem, 2.6vw, 1.7rem);
+      color: var(--text-2);
+      margin-bottom: 1.4rem;
+    }
+    .spot-lede { font-size: 1.08rem; color: var(--text-2); line-height: 1.75; margin-bottom: 2rem; max-width: 680px; }
+    .spot-grid .points { margin: 2rem 0 1.5rem; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 2.5rem; row-gap: 1rem; }
+    .spot-grid .points li { font-size: 0.93rem; }
+    .spot-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.9rem; }
+    .spot-stat {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 1.25rem 1.3rem 1.1rem;
+      box-shadow: var(--shadow);
+    }
+    .spot-stat .stat-value { font-size: clamp(2.3rem, 4.4vw, 3rem); line-height: 1; margin-bottom: 0.35rem; }
+    .spot-stat .stat-label { display: block; font-size: 12.5px; line-height: 1.4; color: var(--text-2); }
+
+    .chart-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 1.6rem 1.75rem 1.3rem;
+      box-shadow: var(--shadow);
+    }
+    .chart-title { font-weight: 600; font-size: 1rem; letter-spacing: -0.01em; }
+    .chart-sub { font-size: 0.85rem; color: var(--text-3); margin: 0.2rem 0 1.4rem; }
+    .bars { display: grid; gap: 0.35rem; }
+    .bar-row {
+      position: relative;
+      display: grid;
+      grid-template-columns: 230px minmax(0, 1fr) 56px;
+      gap: 1rem;
+      align-items: center;
+      padding: 0.5rem 0.4rem;
+      border-radius: 8px;
+      outline: none;
+    }
+    .bar-row:hover, .bar-row:focus-visible { background: var(--surface-2); }
+    .bar-name { font-size: 0.9rem; color: var(--text); line-height: 1.3; }
+    .bar-name small { display: block; font-size: 0.78rem; color: var(--text-3); }
+    .bar-track { position: relative; height: 22px; }
+    .bar-track .grid { position: absolute; top: -6px; bottom: -6px; width: 1px; background: var(--line); }
+    .bar-track .even { position: absolute; top: -10px; bottom: -10px; width: 1px; background: var(--text-3); }
+    .bar-fill {
+      position: absolute; left: 0; top: 3px; height: 16px;
+      background: var(--bar);
+      border-radius: 0 4px 4px 0;
+    }
+    .bar-ci { position: absolute; top: 10px; height: 2px; background: var(--text-2); }
+    .bar-ci::before, .bar-ci::after { content: ""; position: absolute; top: -4px; width: 2px; height: 10px; background: var(--text-2); }
+    .bar-ci::before { left: -1px; } .bar-ci::after { right: -1px; }
+    .bar-val { font-family: var(--mono); font-size: 13px; color: var(--text); text-align: right; }
+    .bar-tip {
+      display: none;
+      position: absolute; z-index: 5; right: 0.4rem; bottom: calc(100% - 0.2rem);
+      max-width: 320px;
+      background: var(--text); color: var(--bg);
+      font-size: 12.5px; line-height: 1.45;
+      padding: 0.55rem 0.75rem; border-radius: 8px;
+      box-shadow: var(--shadow-hover);
+      pointer-events: none;
+    }
+    .bar-row:hover .bar-tip, .bar-row:focus-visible .bar-tip { display: block; }
+    .axis { display: grid; grid-template-columns: 230px minmax(0, 1fr) 56px; gap: 1rem; padding: 0.3rem 0.4rem 0; }
+    .axis-ticks { position: relative; height: 18px; font-family: var(--mono); font-size: 11px; color: var(--text-3); }
+    .axis-ticks span { position: absolute; transform: translateX(-50%); }
+    .axis-ticks span.even-label { color: var(--text-2); }
+    .chart-foot { margin-top: 1rem; font-size: 0.8rem; color: var(--text-3); line-height: 1.6; }
+    .chart-foot details { margin-top: 0.6rem; }
+    .chart-foot summary { cursor: pointer; color: var(--text-2); }
+    .chart-table { width: 100%; border-collapse: collapse; margin-top: 0.6rem; font-size: 0.82rem; color: var(--text-2); }
+    .chart-table th, .chart-table td { text-align: left; padding: 0.35rem 0.5rem; border-bottom: 1px solid var(--line); }
+    .chart-table th { color: var(--text); font-weight: 600; }
+
+    @media (max-width: 860px) {
+      .spot-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .spot-grid .points { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .chart-card { padding: 1.25rem 1rem 1rem; }
+      .bar-row { grid-template-columns: minmax(0, 1fr) 52px; row-gap: 0.4rem; }
+      .bar-name { grid-column: 1 / -1; }
+      .axis { grid-template-columns: minmax(0, 1fr) 52px; }
+      .axis > :first-child { display: none; }
+      .bar-tip { left: 0.4rem; right: 0.4rem; max-width: none; }
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 860px) {
       .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -514,6 +620,7 @@
     <a class="nav-logo" href="#hero">jp<span>.</span></a>
     <div class="nav-right">
       <ul class="nav-links">
+        <li><a href="#puma">The Puma</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#education">Education</a></li>
@@ -534,7 +641,7 @@
       <p class="hero-eyebrow">Stanford University</p>
       <h1><strong>John Pumayalli</strong>Machine learning, and the<br>infrastructure it runs on.</h1>
       <p class="hero-sub">
-        I'm finishing a B.S. in Symbolic Systems and a coterminal M.S. in Computer Science at Stanford, both focused on AI. I run the Google Cloud platform for OrgOS, an LLM research pipeline at the Graduate School of Business, and I like ML projects where the model has to explain itself.
+        I'm finishing a B.S. in Symbolic Systems and a coterminal M.S. in Computer Science at Stanford, both focused on AI. I run the Google Cloud platform for OrgOS, an LLM research pipeline at the Graduate School of Business, and lately I've been training a Catan bot from scratch with self-play reinforcement learning.
       </p>
       <div class="hero-links">
         <a class="btn btn-primary" href="John_Pumayalli_Resume.pdf" download>↓ Resume</a>
@@ -548,10 +655,116 @@
       <ul class="now-list">
         <li><strong>Software Engineer &amp; RA</strong>OrgOS, Stanford Graduate School of Business</li>
         <li><strong>Section Leader</strong>Probability for AI, Stanford</li>
-        <li><strong>The Puma</strong>Self-play Catan bot trained on 779M positions</li>
+        <li><a href="#puma" style="text-decoration:none"><strong>The Puma</strong>Self-play Catan bot trained on 779M positions ↓</a></li>
         <li><strong>Open to Summer 2027</strong>Machine learning engineering internships</li>
       </ul>
     </aside>
+  </div>
+</section>
+
+<!-- THE PUMA -->
+<section id="puma">
+  <div class="container">
+    <p class="section-label">Featured project</p>
+    <div class="spot-grid">
+      <div>
+        <h2 class="spot-title">The Puma</h2>
+        <p class="spot-kicker">A Catan bot that taught itself to play.</p>
+        <p class="spot-lede">
+          I trained a Catan 1v1 bot from scratch on my gaming PC. It never saw a human game and never copied another bot: it learned entirely by playing against itself, about four million games in two days of compute.
+        </p>
+        <div class="spot-stats">
+          <div class="spot-stat"><span class="stat-value">779M</span><span class="stat-label">training positions</span></div>
+          <div class="spot-stat"><span class="stat-value">4.0M</span><span class="stat-label">games against itself</span></div>
+          <div class="spot-stat"><span class="stat-value">46 h</span><span class="stat-label">of compute on one gaming PC</span></div>
+          <div class="spot-stat"><span class="stat-value">79%</span><span class="stat-label">win rate against people so far (11–3)</span></div>
+        </div>
+        <ul class="points">
+          <li><strong>How it thinks:</strong> a 279K-parameter graph neural network reads the board as a graph of corners and edges and predicts both the best move and who's winning. At play time, an AlphaZero-style tree search guided by that network runs about 1,000 simulations per move.</li>
+          <li><strong>How it learned:</strong> PPO over 2,885 iterations. A small shaping reward helped early games finish and faded to zero by iteration 200; after that, the only reward was winning. Average game length fell from 174 turns to 87 as it improved.</li>
+          <li><strong>The pipeline:</strong> 11 CPU workers play games in parallel and send positions through shared memory to one GPU process, which evaluates them in batches of about 130. It sustained 4,625 positions per second on a Ryzen 5 3600 and a GTX 1080.</li>
+          <li><strong>It plays fair:</strong> it sees only what a player at the table could know, never your hand or your development cards. You can play it best-of-five in a Colonist-style browser arena I built and open-sourced.</li>
+        </ul>
+        <div class="tech-list">
+          <span class="tech-chip">Python</span>
+          <span class="tech-chip">PyTorch</span>
+          <span class="tech-chip">Graph neural network</span>
+          <span class="tech-chip">PPO self-play</span>
+          <span class="tech-chip">AlphaZero-style search</span>
+          <span class="tech-chip">Multiprocessing</span>
+          <span class="tech-chip">Catanatron</span>
+        </div>
+        <div class="project-links">
+          <a class="btn btn-ghost" href="https://github.com/johngpuma/catan-1v1-arena" target="_blank" rel="noopener">Arena UI on GitHub ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <figure class="chart-card">
+      <div class="chart-title">How often The Puma wins</div>
+      <p class="chart-sub">Share of games won against each opponent. Bars start at zero; whiskers are 95% intervals; the line marks an even 50%.</p>
+      <div class="bars">
+          <div class="bar-row" tabindex="0" aria-label="Catanatron AlphaBeta: 98.5% win rate. 197 of 200 games with no search at all. It won 195–200 of 200 at every one of 29 checkpoints from 389M to 769M positions.">
+            <div class="bar-name">Catanatron AlphaBeta<small>depth-2 search bot · Puma network alone</small></div>
+            <div class="bar-track" aria-hidden="true">
+              <span class="grid" style="left:25%"></span><span class="grid" style="left:75%"></span><span class="grid" style="left:100%"></span>
+              <span class="even" style="left:50%"></span>
+              <span class="bar-fill" style="width:98.5%"></span>
+              <span class="bar-ci" style="left:96.0%;width:3.5%"></span>
+            </div>
+            <div class="bar-val">98.5%</div>
+            <div class="bar-tip" role="tooltip">197 of 200 games with no search at all. It won 195–200 of 200 at every one of 29 checkpoints from 389M to 769M positions.</div>
+          </div>
+          <div class="bar-row" tabindex="0" aria-label="OpenHex ladder bot, rated 1462: 60.0% win rate. 120 of 200 games (±6.8 points). With the network alone and no search: 109 of 200 (54.5%).">
+            <div class="bar-name">OpenHex ladder bot, rated 1462<small>neural-network bot · 1 s of search a move</small></div>
+            <div class="bar-track" aria-hidden="true">
+              <span class="grid" style="left:25%"></span><span class="grid" style="left:75%"></span><span class="grid" style="left:100%"></span>
+              <span class="even" style="left:50%"></span>
+              <span class="bar-fill" style="width:60.0%"></span>
+              <span class="bar-ci" style="left:53.2%;width:13.6%"></span>
+            </div>
+            <div class="bar-val">60.0%</div>
+            <div class="bar-tip" role="tooltip">120 of 200 games (±6.8 points). With the network alone and no search: 109 of 200 (54.5%).</div>
+          </div>
+          <div class="bar-row" tabindex="0" aria-label="OpenHex search bot, rated ~1700: 52.0% win rate. 104 of 200 games (±6.9 points): an even match, within the margin.">
+            <div class="bar-name">OpenHex search bot, rated ~1700<small>its search capped below ladder strength</small></div>
+            <div class="bar-track" aria-hidden="true">
+              <span class="grid" style="left:25%"></span><span class="grid" style="left:75%"></span><span class="grid" style="left:100%"></span>
+              <span class="even" style="left:50%"></span>
+              <span class="bar-fill" style="width:52.0%"></span>
+              <span class="bar-ci" style="left:45.1%;width:13.8%"></span>
+            </div>
+            <div class="bar-val">52.0%</div>
+            <div class="bar-tip" role="tooltip">104 of 200 games (±6.9 points): an even match, within the margin.</div>
+          </div>
+          <div class="bar-row" tabindex="0" aria-label="Its own 389M-position self: 52.3% win rate. 314 of 600 games (±4.0 points): the finished bot against itself at half its training.">
+            <div class="bar-name">Its own 389M-position self<small>network alone · 600 games</small></div>
+            <div class="bar-track" aria-hidden="true">
+              <span class="grid" style="left:25%"></span><span class="grid" style="left:75%"></span><span class="grid" style="left:100%"></span>
+              <span class="even" style="left:50%"></span>
+              <span class="bar-fill" style="width:52.3%"></span>
+              <span class="bar-ci" style="left:48.3%;width:8.0%"></span>
+            </div>
+            <div class="bar-val">52.3%</div>
+            <div class="bar-tip" role="tooltip">314 of 600 games (±4.0 points): the finished bot against itself at half its training.</div>
+          </div>
+      </div>
+      <div class="axis" aria-hidden="true">
+        <div></div>
+        <div class="axis-ticks"><span style="left:0%">0%</span><span style="left:25%">25%</span><span class="even-label" style="left:50%">50% even</span><span style="left:75%">75%</span><span style="left:100%">100%</span></div>
+        <div></div>
+      </div>
+      <figcaption class="chart-foot">
+        Matches were 200 games on 100 boards with seats swapped (600 for the self-match), measured on the same PC. OpenHex games were refereed by the opponent's own engine. Hover or tab to a row for the raw counts.
+        <details>
+          <summary>Show as a table</summary>
+          <table class="chart-table">
+            <thead><tr><th>Opponent</th><th>Setup</th><th>Win rate</th><th>95% interval</th></tr></thead>
+            <tbody><tr><td>Catanatron AlphaBeta</td><td>depth-2 search bot · Puma network alone</td><td>98.5%</td><td>96.0–99.5%</td></tr><tr><td>OpenHex ladder bot, rated 1462</td><td>neural-network bot · 1 s of search a move</td><td>60.0%</td><td>53.2–66.8%</td></tr><tr><td>OpenHex search bot, rated ~1700</td><td>its search capped below ladder strength</td><td>52.0%</td><td>45.1–58.9%</td></tr><tr><td>Its own 389M-position self</td><td>network alone · 600 games</td><td>52.3%</td><td>48.3–56.3%</td></tr></tbody>
+          </table>
+        </details>
+      </figcaption>
+    </figure>
   </div>
 </section>
 
@@ -682,55 +895,6 @@
         <div class="project-links">
           <a class="btn btn-ghost" href="CS229_Catan_Final_Report.pdf" target="_blank" rel="noopener">Read paper ↗</a>
           <a class="btn btn-ghost" href="CS229_Catan_Poster.pdf" target="_blank" rel="noopener">View poster ↗</a>
-        </div>
-      </div>
-
-      <!-- The Puma: self-play Catan bot -->
-      <div class="project-card featured wide">
-        <div class="project-header">
-          <span class="project-title">The Puma: a Catan 1v1 Bot Trained from Scratch by Self-Play</span>
-          <span class="project-tag tag-featured">Reinforcement learning</span>
-        </div>
-        <p class="project-desc">
-          A Catan 1v1 bot that learned entirely by playing against itself, with no human games and no imitation, trained on a home gaming PC. A 279K-parameter graph neural network reads the board as a graph of corners and edges and predicts both the best move and who's winning. At play time, an AlphaZero-style tree search guided by that network runs about 1,000 simulations per move.
-        </p>
-        <div class="stat-row">
-          <div class="stat-pill">
-            <span class="stat-value">779M</span>
-            <span class="stat-label">Training positions</span>
-          </div>
-          <div class="stat-pill">
-            <span class="stat-value">4.0M</span>
-            <span class="stat-label">Self-play games</span>
-          </div>
-          <div class="stat-pill">
-            <span class="stat-value">197/200</span>
-            <span class="stat-label">vs. Catanatron AlphaBeta</span>
-          </div>
-          <div class="stat-pill">
-            <span class="stat-value">60%</span>
-            <span class="stat-label">vs. a 1462-rated ladder bot</span>
-          </div>
-        </div>
-        <ul class="points">
-          <li><strong>Training:</strong> PPO over 2,885 iterations and about 4.0 million self-play games, or 779 million positions, in 46 hours of compute on one Ryzen 5 3600 and a GTX 1080. Average game length fell from 174 turns to 87 as it improved.</li>
-          <li><strong>Systems:</strong> 11 CPU worker processes play games in parallel and send positions through shared memory to a single GPU process, which evaluates them in batches of about 130. That pipeline sustained 4,625 positions/s and 15,700 network evaluations/s.</li>
-          <li><strong>Reward:</strong> a small shaping reward helped early games finish and faded to zero by iteration 200. After that, the only reward was winning.</li>
-          <li><strong>Against engines:</strong> using the network alone, with no search, it won 195–200 of 200 games against Catanatron's AlphaBeta bot at every one of 29 checkpoints from 389M to 769M positions.</li>
-          <li><strong>Against ranked bots:</strong> in 200-game matches on the OpenHex ladder (100 boards, seats swapped, refereed by the opponent's own engine, about ±7 points), it scored 60% against a neural-network bot rated 1462 with one second of search a move, and an even 52% against a search bot rated about 1700.</li>
-          <li><strong>Against people:</strong> 11–3 so far against human players at its practice table, a Colonist-style browser arena I built and open-sourced. It plays fair: it sees only what a player at the table could know, never your hand or your development cards.</li>
-        </ul>
-        <div class="tech-list">
-          <span class="tech-chip">Python</span>
-          <span class="tech-chip">PyTorch</span>
-          <span class="tech-chip">Graph neural network</span>
-          <span class="tech-chip">PPO self-play</span>
-          <span class="tech-chip">AlphaZero-style search</span>
-          <span class="tech-chip">Multiprocessing</span>
-          <span class="tech-chip">Catanatron</span>
-        </div>
-        <div class="project-links">
-          <a class="btn btn-ghost" href="https://github.com/johngpuma/catan-1v1-arena" target="_blank" rel="noopener">Arena UI on GitHub ↗</a>
         </div>
       </div>
 
