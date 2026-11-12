@@ -548,6 +548,7 @@
       <ul class="now-list">
         <li><strong>Software Engineer &amp; RA</strong>OrgOS, Stanford Graduate School of Business</li>
         <li><strong>Section Leader</strong>Probability for AI, Stanford</li>
+        <li><strong>The Puma</strong>Self-play Catan bot trained on 779M positions</li>
         <li><strong>Open to Summer 2027</strong>Machine learning engineering internships</li>
       </ul>
     </aside>
@@ -681,6 +682,55 @@
         <div class="project-links">
           <a class="btn btn-ghost" href="CS229_Catan_Final_Report.pdf" target="_blank" rel="noopener">Read paper ↗</a>
           <a class="btn btn-ghost" href="CS229_Catan_Poster.pdf" target="_blank" rel="noopener">View poster ↗</a>
+        </div>
+      </div>
+
+      <!-- The Puma: self-play Catan bot -->
+      <div class="project-card featured wide">
+        <div class="project-header">
+          <span class="project-title">The Puma: a Catan 1v1 Bot Trained from Scratch by Self-Play</span>
+          <span class="project-tag tag-featured">Reinforcement learning</span>
+        </div>
+        <p class="project-desc">
+          A Catan 1v1 bot that learned entirely by playing against itself, with no human games and no imitation, trained on a home gaming PC. A 279K-parameter graph neural network reads the board as a graph of corners and edges and predicts both the best move and who's winning. At play time, an AlphaZero-style tree search guided by that network runs about 1,000 simulations per move.
+        </p>
+        <div class="stat-row">
+          <div class="stat-pill">
+            <span class="stat-value">779M</span>
+            <span class="stat-label">Training positions</span>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-value">4.0M</span>
+            <span class="stat-label">Self-play games</span>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-value">197/200</span>
+            <span class="stat-label">vs. Catanatron AlphaBeta</span>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-value">60%</span>
+            <span class="stat-label">vs. a 1462-rated ladder bot</span>
+          </div>
+        </div>
+        <ul class="points">
+          <li><strong>Training:</strong> PPO over 2,885 iterations and about 4.0 million self-play games, or 779 million positions, in 46 hours of compute on one Ryzen 5 3600 and a GTX 1080. Average game length fell from 174 turns to 87 as it improved.</li>
+          <li><strong>Systems:</strong> 11 CPU worker processes play games in parallel and send positions through shared memory to a single GPU process, which evaluates them in batches of about 130. That pipeline sustained 4,625 positions/s and 15,700 network evaluations/s.</li>
+          <li><strong>Reward:</strong> a small shaping reward helped early games finish and faded to zero by iteration 200. After that, the only reward was winning.</li>
+          <li><strong>Against engines:</strong> using the network alone, with no search, it won 195–200 of 200 games against Catanatron's AlphaBeta bot at every one of 29 checkpoints from 389M to 769M positions.</li>
+          <li><strong>Against ranked bots:</strong> in 200-game matches on the OpenHex ladder (100 boards, seats swapped, refereed by the opponent's own engine, about ±7 points), it scored 60% against a neural-network bot rated 1462 with one second of search a move, and an even 52% against a search bot rated about 1700.</li>
+          <li><strong>Against people:</strong> 11–3 so far against human players at its practice table, a Colonist-style browser arena I built and open-sourced. It plays fair: it sees only what a player at the table could know, never your hand or your development cards.</li>
+        </ul>
+        <div class="tech-list">
+          <span class="tech-chip">Python</span>
+          <span class="tech-chip">PyTorch</span>
+          <span class="tech-chip">Graph neural network</span>
+          <span class="tech-chip">PPO self-play</span>
+          <span class="tech-chip">AlphaZero-style search</span>
+          <span class="tech-chip">Multiprocessing</span>
+          <span class="tech-chip">Catanatron</span>
+        </div>
+        <div class="project-links">
+          <a class="btn btn-ghost" href="https://github.com/johngpuma/catan-1v1-arena" target="_blank" rel="noopener">Arena UI on GitHub ↗</a>
         </div>
       </div>
 
