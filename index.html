@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>John Pumayalli</title>
-  <meta name="description" content="John Pumayalli: Stanford coterminal student in AI. Machine learning, cloud infrastructure, and research." />
+  <meta name="description" content="John Pumayalli: Stanford coterminal M.S. student in CS (AI). Self-play reinforcement learning and the cloud infrastructure ML runs on. Open to Summer 2027 ML engineering internships." />
   <meta name="theme-color" content="#faf9f6" />
   <script>
     (function () {
@@ -15,616 +15,20 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    /* ── THEME TOKENS (light is the default; dark via the nav toggle) ── */
-    :root {
-      color-scheme: light;
-      --bg: #faf9f6;
-      --bg-glow: rgba(15,118,110,0.07);
-      --surface: #ffffff;
-      --surface-2: #f3f1ec;
-      --line: rgba(24,24,20,0.09);
-      --line-strong: rgba(24,24,20,0.16);
-      --text: #17191e;
-      --text-2: #4a515e;
-      --text-3: #7a818d;
-      --accent: #0f766e;
-      --accent-hover: #0d5f59;
-      --accent-soft: rgba(15,118,110,0.08);
-      --accent-line: rgba(15,118,110,0.28);
-      --on-accent: #ffffff;
-      --violet: #6d28d9;
-      --violet-soft: rgba(109,40,217,0.08);
-      --violet-line: rgba(109,40,217,0.22);
-      --nav-bg: rgba(250,249,246,0.82);
-      --shadow: 0 1px 2px rgba(20,20,15,0.04), 0 4px 16px -8px rgba(20,20,15,0.08);
-      --shadow-hover: 0 2px 4px rgba(20,20,15,0.05), 0 16px 36px -14px rgba(20,20,15,0.18);
-      --dot: rgba(24,24,20,0.07);
-
-      --serif: 'Instrument Serif', Georgia, serif;
-      --sans: 'Inter', system-ui, -apple-system, sans-serif;
-      --mono: 'IBM Plex Mono', ui-monospace, monospace;
-    }
-
-    :root[data-theme="dark"] {
-      color-scheme: dark;
-      --bg: #0d1117;
-      --bg-glow: rgba(45,212,191,0.08);
-      --surface: #151b23;
-      --surface-2: #1f262f;
-      --line: rgba(255,255,255,0.08);
-      --line-strong: rgba(255,255,255,0.16);
-      --text: #f0f6fc;
-      --text-2: #a3acb8;
-      --text-3: #737c88;
-      --accent: #2dd4bf;
-      --accent-hover: #5eead4;
-      --accent-soft: rgba(45,212,191,0.10);
-      --accent-line: rgba(45,212,191,0.30);
-      --on-accent: #0d1117;
-      --violet: #c4b5fd;
-      --violet-soft: rgba(139,92,246,0.12);
-      --violet-line: rgba(139,92,246,0.28);
-      --nav-bg: rgba(13,17,23,0.80);
-      --shadow: none;
-      --shadow-hover: 0 18px 40px -18px rgba(0,0,0,0.6);
-      --dot: rgba(255,255,255,0.05);
-    }
-
-    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--sans);
-      font-size: 16px;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      transition: background-color 0.25s ease, color 0.25s ease;
-    }
-
-    a { color: inherit; }
-    ::selection { background: var(--accent-soft); color: var(--text); }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: var(--nav-bg);
-      backdrop-filter: saturate(160%) blur(14px);
-      -webkit-backdrop-filter: saturate(160%) blur(14px);
-      border-bottom: 1px solid var(--line);
-    }
-    .nav-inner {
-      max-width: 1040px; margin: 0 auto; padding: 0 2rem; height: 60px;
-      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-    }
-    .nav-logo {
-      font-family: var(--serif);
-      font-size: 22px;
-      color: var(--text);
-      text-decoration: none;
-      letter-spacing: -0.01em;
-    }
-    .nav-logo span { color: var(--accent); }
-    .nav-right { display: flex; align-items: center; gap: 1.5rem; }
-    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
-    .nav-links a {
-      font-size: 13.5px;
-      color: var(--text-2);
-      text-decoration: none;
-      transition: color 0.15s;
-    }
-    .nav-links a:hover { color: var(--accent); }
-
-    .theme-toggle {
-      width: 36px; height: 36px;
-      display: inline-grid; place-items: center;
-      border-radius: 999px;
-      border: 1px solid var(--line-strong);
-      background: var(--surface);
-      color: var(--text-2);
-      cursor: pointer;
-      transition: color 0.15s, border-color 0.15s, transform 0.2s;
-    }
-    .theme-toggle:hover { color: var(--accent); border-color: var(--accent-line); }
-    .theme-toggle:active { transform: scale(0.94); }
-    .theme-toggle svg { width: 17px; height: 17px; }
-    .theme-toggle .icon-sun { display: none; }
-    :root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
-    :root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
-
-    /* ── LAYOUT ── */
-    .container { max-width: 1040px; margin: 0 auto; padding: 0 2rem; }
-    section { padding: 6rem 0; }
-    section + section { border-top: 1px solid var(--line); }
-
-    /* ── HERO ── */
-    #hero {
-      position: relative;
-      padding: 10rem 0 6rem;
-      overflow: hidden;
-    }
-    #hero::before {
-      content: ""; position: absolute; inset: 0; z-index: -1;
-      background:
-        radial-gradient(600px 380px at 85% 10%, var(--bg-glow), transparent 70%),
-        radial-gradient(var(--dot) 1px, transparent 1px);
-      background-size: auto, 22px 22px;
-      -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent);
-      mask-image: linear-gradient(to bottom, #000 55%, transparent);
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 300px;
-      gap: 3.5rem;
-      align-items: end;
-    }
-    .hero-eyebrow {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      font-family: var(--mono);
-      font-size: 12px;
-      color: var(--accent);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 4px 10px;
-      border: 1px solid var(--accent-line);
-      background: var(--accent-soft);
-      border-radius: 999px;
-      margin-bottom: 1.75rem;
-    }
-    h1 {
-      font-family: var(--serif);
-      font-weight: 400;
-      font-size: clamp(2.2rem, 5vw, 3.4rem);
-      line-height: 1.08;
-      letter-spacing: -0.015em;
-      color: var(--text-2);
-      margin-bottom: 1.5rem;
-    }
-    h1 strong {
-      display: block;
-      font-weight: 400;
-      font-size: clamp(3.2rem, 9vw, 5.6rem);
-      line-height: 1;
-      color: var(--text);
-      margin-bottom: 0.9rem;
-      letter-spacing: -0.025em;
-    }
-    h1 em { font-style: italic; color: var(--accent); }
-    .hero-sub {
-      font-size: 1.08rem;
-      color: var(--text-2);
-      max-width: 560px;
-      margin-bottom: 2.25rem;
-      line-height: 1.7;
-    }
-    .hero-links { display: flex; gap: 0.6rem; flex-wrap: wrap; }
-
-    .now-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 1.4rem 1.5rem;
-      box-shadow: var(--shadow);
-    }
-    .now-label {
-      display: flex; align-items: center; gap: 0.5rem;
-      font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--text-3); margin-bottom: 1rem;
-    }
-    .pulse {
-      width: 8px; height: 8px; border-radius: 50%; background: var(--accent);
-      box-shadow: 0 0 0 0 var(--accent-line);
-      animation: pulse 2.4s infinite;
-    }
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 var(--accent-line); }
-      70% { box-shadow: 0 0 0 8px transparent; }
-      100% { box-shadow: 0 0 0 0 transparent; }
-    }
-    .now-list { list-style: none; display: grid; gap: 0.9rem; }
-    .now-list li { font-size: 0.88rem; color: var(--text-2); line-height: 1.45; }
-    .now-list strong { display: block; color: var(--text); font-weight: 500; font-size: 0.92rem; }
-
-    .btn {
-      display: inline-flex; align-items: center; gap: 0.45rem;
-      padding: 0.6rem 1.15rem;
-      font-size: 13.5px;
-      font-family: var(--sans);
-      font-weight: 500;
-      border-radius: 999px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: background-color 0.15s, color 0.15s, border-color 0.15s, transform 0.15s;
-      border: 1px solid var(--line-strong);
-    }
-    .btn:hover { transform: translateY(-1px); }
-    .btn-primary {
-      background: var(--accent);
-      color: var(--on-accent);
-      border-color: var(--accent);
-      font-weight: 600;
-    }
-    .btn-primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
-    .btn-ghost { background: var(--surface); color: var(--text-2); }
-    .btn-ghost:hover { color: var(--accent); border-color: var(--accent-line); }
-    .project-links .btn { padding: 0.45rem 0.95rem; font-size: 12.5px; }
-
-    /* ── SECTION HEADERS ── */
-    .section-label {
-      font-family: var(--mono);
-      font-size: 11.5px;
-      color: var(--accent);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 0.6rem;
-    }
-    h2 {
-      font-family: var(--serif);
-      font-size: clamp(2.2rem, 4.5vw, 2.9rem);
-      font-weight: 400;
-      line-height: 1.1;
-      letter-spacing: -0.015em;
-      margin-bottom: 3rem;
-    }
-
-    /* ── PROJECTS ── */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1.25rem;
-    }
-    .project-card {
-      display: flex; flex-direction: column;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 1.75rem;
-      box-shadow: var(--shadow);
-      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
-    }
-    .project-card.wide { grid-column: 1 / -1; }
-    .project-card:hover {
-      border-color: var(--accent-line);
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-hover);
-    }
-    .project-card.featured {
-      background:
-        radial-gradient(520px 260px at 100% 0%, var(--accent-soft), transparent 70%),
-        var(--surface);
-      border-color: var(--accent-line);
-    }
-    .project-header {
-      display: flex; align-items: flex-start; justify-content: space-between;
-      gap: 1rem; margin-bottom: 0.85rem;
-    }
-    .project-title {
-      font-size: 1.08rem;
-      font-weight: 600;
-      line-height: 1.35;
-      letter-spacing: -0.01em;
-      color: var(--text);
-    }
-    .project-card.wide .project-title { font-size: 1.2rem; }
-    .project-tag {
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 3px 9px;
-      border-radius: 999px;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-    .tag-featured { background: var(--accent-soft); color: var(--accent); border: 1px solid var(--accent-line); }
-    .tag-work { background: var(--violet-soft); color: var(--violet); border: 1px solid var(--violet-line); }
-
-    .project-desc {
-      font-size: 0.92rem;
-      color: var(--text-2);
-      margin-bottom: 1.35rem;
-      line-height: 1.7;
-    }
-
-    .stat-row {
-      display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 0.75rem; margin-bottom: 1.35rem;
-    }
-    .stat-pill {
-      background: var(--surface-2);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 0.85rem 1rem;
-    }
-    .stat-value {
-      font-family: var(--serif);
-      font-size: 2rem;
-      line-height: 1.05;
-      color: var(--accent);
-      display: block;
-    }
-    .stat-label {
-      font-size: 11.5px;
-      color: var(--text-3);
-    }
-
-    .points {
-      list-style: none;
-      display: grid; gap: 0.5rem;
-      margin: -0.35rem 0 1.35rem;
-    }
-    .points li {
-      position: relative;
-      padding-left: 1.1rem;
-      font-size: 0.9rem;
-      color: var(--text-2);
-      line-height: 1.6;
-    }
-    .points li::before {
-      content: ""; position: absolute; left: 0; top: 0.62em;
-      width: 5px; height: 5px; border-radius: 50%;
-      background: var(--accent);
-    }
-    .exp-item .points { grid-column: 1 / -1; margin: 0.6rem 0 0; max-width: 720px; }
-
-    .tech-list { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.2rem; }
-    .project-card .tech-list:last-child { margin-bottom: 0; }
-    .tech-chip {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--text-2);
-      background: var(--surface-2);
-      border-radius: 6px;
-      padding: 3px 8px;
-    }
-    .project-links { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: auto; }
-
-    /* ── EXPERIENCE (timeline) ── */
-    .exp-item {
-      position: relative;
-      display: grid; grid-template-columns: 1fr auto; gap: 0.15rem 1rem;
-      padding: 0 0 2.25rem 2rem;
-      border-left: 1px solid var(--line-strong);
-      margin-left: 6px;
-    }
-    .timeline .exp-item:last-child { padding-bottom: 0.25rem; }
-    .exp-item::before {
-      content: ""; position: absolute; left: -6px; top: 5px;
-      width: 11px; height: 11px; border-radius: 50%;
-      background: var(--bg);
-      border: 2px solid var(--accent);
-    }
-    .exp-item.current::before { background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
-    .exp-role { font-weight: 600; font-size: 1rem; letter-spacing: -0.01em; }
-    .exp-date {
-      font-family: var(--mono); font-size: 12px; color: var(--text-3);
-      text-align: right; padding-top: 3px; white-space: nowrap;
-    }
-    .exp-org { color: var(--accent); font-size: 0.9rem; font-weight: 500; margin-bottom: 0.45rem; }
-    .exp-desc { font-size: 0.9rem; color: var(--text-2); line-height: 1.7; grid-column: 1 / -1; max-width: 720px; }
-    .sub-label { margin-top: 3rem; margin-bottom: 1.5rem; }
-
-    /* ── EDUCATION ── */
-    .edu-list {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-    .edu-block {
-      display: flex; justify-content: space-between; align-items: flex-start;
-      gap: 1.5rem; padding: 1.5rem 1.75rem;
-    }
-    .edu-block + .edu-block { border-top: 1px solid var(--line); }
-    .edu-school { font-weight: 600; font-size: 1rem; letter-spacing: -0.01em; }
-    .edu-degree { font-size: 0.92rem; color: var(--text-2); margin-top: 3px; }
-    .edu-meta {
-      font-family: var(--mono); font-size: 12px; color: var(--text-3);
-      text-align: right; white-space: nowrap; line-height: 1.7;
-    }
-    .edu-courses { margin-top: 0.9rem; }
-    .edu-courses-label {
-      font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;
-      text-transform: uppercase; color: var(--text-3); margin-bottom: 0.5rem;
-    }
-    .course-list { display: flex; flex-wrap: wrap; gap: 0.35rem; list-style: none; }
-    .course-list li {
-      font-size: 12.5px; color: var(--text-2);
-      background: var(--surface-2); border-radius: 6px; padding: 3px 9px;
-    }
-
-    /* ── SKILLS ── */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1rem;
-    }
-    .skills-grid > div {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 1.2rem 1.25rem;
-      box-shadow: var(--shadow);
-    }
-    .skill-group-label {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--accent);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 0.75rem;
-    }
-    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
-    .skill-tag {
-      font-size: 12.5px;
-      color: var(--text-2);
-      background: var(--surface-2);
-      border-radius: 6px;
-      padding: 3px 9px;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      padding: 3rem 0;
-      border-top: 1px solid var(--line);
-      font-size: 13px;
-      color: var(--text-3);
-    }
-    .footer-inner { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
-    footer a { color: var(--text-2); text-decoration: none; }
-    footer a:hover { color: var(--accent); }
-
-    /* ── PUMA SPOTLIGHT ── */
-    :root { --bar: #0d9488; }
-    :root[data-theme="dark"] { --bar: #13a595; }
-    #puma {
-      position: relative;
-      background:
-        radial-gradient(700px 360px at 0% 0%, var(--accent-soft), transparent 70%),
-        var(--bg);
-    }
-    .spot-grid { margin-bottom: 2.5rem; }
-    .spot-title {
-      font-size: clamp(3rem, 7vw, 4.6rem);
-      line-height: 1;
-      margin-bottom: 0.4rem;
-    }
-    .spot-kicker {
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: clamp(1.3rem, 2.6vw, 1.7rem);
-      color: var(--text-2);
-      margin-bottom: 1.4rem;
-    }
-    .spot-lede { font-size: 1.08rem; color: var(--text-2); line-height: 1.75; margin-bottom: 2rem; max-width: 680px; }
-    .spot-grid .points { margin: 2rem 0 1.5rem; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 2.5rem; row-gap: 1rem; }
-    .spot-grid .points li { font-size: 0.93rem; }
-    .spot-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.9rem; }
-    .spot-stat {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 1.25rem 1.3rem 1.1rem;
-      box-shadow: var(--shadow);
-    }
-    .spot-stat .stat-value { font-size: clamp(2.3rem, 4.4vw, 3rem); line-height: 1; margin-bottom: 0.35rem; }
-    .spot-stat .stat-label { display: block; font-size: 12.5px; line-height: 1.4; color: var(--text-2); }
-
-    .chart-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 1.6rem 1.75rem 1.3rem;
-      box-shadow: var(--shadow);
-    }
-    .chart-title { font-weight: 600; font-size: 1rem; letter-spacing: -0.01em; }
-    .chart-sub { font-size: 0.85rem; color: var(--text-3); margin: 0.2rem 0 1.4rem; }
-    .bars { display: grid; gap: 0.35rem; }
-    .bar-row {
-      position: relative;
-      display: grid;
-      grid-template-columns: 230px minmax(0, 1fr) 56px;
-      gap: 1rem;
-      align-items: center;
-      padding: 0.5rem 0.4rem;
-      border-radius: 8px;
-      outline: none;
-    }
-    .bar-row:hover, .bar-row:focus-visible { background: var(--surface-2); }
-    .bar-name { font-size: 0.9rem; color: var(--text); line-height: 1.3; }
-    .bar-name small { display: block; font-size: 0.78rem; color: var(--text-3); }
-    .bar-track { position: relative; height: 22px; }
-    .bar-track .grid { position: absolute; top: -6px; bottom: -6px; width: 1px; background: var(--line); }
-    .bar-track .even { position: absolute; top: -10px; bottom: -10px; width: 1px; background: var(--text-3); }
-    .bar-fill {
-      position: absolute; left: 0; top: 3px; height: 16px;
-      background: var(--bar);
-      border-radius: 0 4px 4px 0;
-    }
-    .bar-ci { position: absolute; top: 10px; height: 2px; background: var(--text-2); }
-    .bar-ci::before, .bar-ci::after { content: ""; position: absolute; top: -4px; width: 2px; height: 10px; background: var(--text-2); }
-    .bar-ci::before { left: -1px; } .bar-ci::after { right: -1px; }
-    .bar-val { font-family: var(--mono); font-size: 13px; color: var(--text); text-align: right; }
-    .bar-tip {
-      display: none;
-      position: absolute; z-index: 5; right: 0.4rem; bottom: calc(100% - 0.2rem);
-      max-width: 320px;
-      background: var(--text); color: var(--bg);
-      font-size: 12.5px; line-height: 1.45;
-      padding: 0.55rem 0.75rem; border-radius: 8px;
-      box-shadow: var(--shadow-hover);
-      pointer-events: none;
-    }
-    .bar-row:hover .bar-tip, .bar-row:focus-visible .bar-tip { display: block; }
-    .axis { display: grid; grid-template-columns: 230px minmax(0, 1fr) 56px; gap: 1rem; padding: 0.3rem 0.4rem 0; }
-    .axis-ticks { position: relative; height: 18px; font-family: var(--mono); font-size: 11px; color: var(--text-3); }
-    .axis-ticks span { position: absolute; transform: translateX(-50%); }
-    .axis-ticks span.even-label { color: var(--text-2); }
-    .chart-foot { margin-top: 1rem; font-size: 0.8rem; color: var(--text-3); line-height: 1.6; }
-    .chart-foot details { margin-top: 0.6rem; }
-    .chart-foot summary { cursor: pointer; color: var(--text-2); }
-    .chart-table { width: 100%; border-collapse: collapse; margin-top: 0.6rem; font-size: 0.82rem; color: var(--text-2); }
-    .chart-table th, .chart-table td { text-align: left; padding: 0.35rem 0.5rem; border-bottom: 1px solid var(--line); }
-    .chart-table th { color: var(--text); font-weight: 600; }
-
-    @media (max-width: 860px) {
-      .spot-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .spot-grid .points { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 600px) {
-      .chart-card { padding: 1.25rem 1rem 1rem; }
-      .bar-row { grid-template-columns: minmax(0, 1fr) 52px; row-gap: 0.4rem; }
-      .bar-name { grid-column: 1 / -1; }
-      .axis { grid-template-columns: minmax(0, 1fr) 52px; }
-      .axis > :first-child { display: none; }
-      .bar-tip { left: 0.4rem; right: 0.4rem; max-width: none; }
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 860px) {
-      .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .now-card { max-width: 440px; }
-      .projects-grid { grid-template-columns: 1fr; }
-      .stat-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
-    @media (max-width: 600px) {
-      .nav-inner { padding: 0 1rem; }
-      .nav-links { display: none; }
-      .container { padding: 0 1rem; }
-      section { padding: 4.5rem 0; }
-      #hero { padding: 7.5rem 0 4.5rem; }
-      .project-card { padding: 1.35rem; }
-      .project-header { flex-direction: column; gap: 0.5rem; }
-      .exp-item { grid-template-columns: 1fr; padding-left: 1.4rem; }
-      .exp-date { text-align: left; order: -1; padding-top: 0; }
-      .edu-block { flex-direction: column; gap: 0.5rem; padding: 1.25rem; }
-      .edu-meta { text-align: left; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before { transition: none !important; animation: none !important; }
-      html { scroll-behavior: auto; }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-inner">
-    <a class="nav-logo" href="#hero">jp<span>.</span></a>
+<nav class="top">
+  <div class="container nav-inner">
+    <a class="nav-logo" href="#top">jp<span>.</span></a>
     <div class="nav-right">
       <ul class="nav-links">
         <li><a href="#puma">The Puma</a></li>
-        <li><a href="#projects">Projects</a></li>
+        <li><a href="#work">Work</a></li>
         <li><a href="#experience">Experience</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#skills">Skills</a></li>
+        <li><a href="John_Pumayalli_Resume.pdf">Resume</a></li>
       </ul>
       <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark theme">
         <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
@@ -634,317 +38,161 @@
   </div>
 </nav>
 
+<main id="top">
+
 <!-- HERO -->
-<section id="hero">
-  <div class="container hero-grid">
-    <div>
-      <p class="hero-eyebrow">Stanford University</p>
-      <h1><strong>John Pumayalli</strong>Machine learning, and the<br>infrastructure it runs on.</h1>
-      <p class="hero-sub">
-        I'm finishing a B.S. in Symbolic Systems and a coterminal M.S. in Computer Science at Stanford, both focused on AI. I run the Google Cloud platform for OrgOS, an LLM research pipeline at the Graduate School of Business, and lately I've been training a Catan bot from scratch with self-play reinforcement learning.
-      </p>
-      <div class="hero-links">
-        <a class="btn btn-primary" href="John_Pumayalli_Resume.pdf" download>↓ Resume</a>
-        <a class="btn btn-ghost" href="mailto:johnpuma@stanford.edu">Email</a>
-        <a class="btn btn-ghost" href="https://linkedin.com/in/johnpumayalli" target="_blank" rel="noopener">LinkedIn ↗</a>
-        <a class="btn btn-ghost" href="https://github.com/johngpuma" target="_blank" rel="noopener">GitHub ↗</a>
-      </div>
+<section class="hero">
+  <div class="container">
+    <h1>John Pumayalli</h1>
+    <p class="pitch">I build machine learning systems and the cloud infrastructure they run on.</p>
+    <p class="status"><span class="dot" aria-hidden="true"></span>Open to Summer 2027 ML engineering internships</p>
+    <p class="intro prose">I trained <a href="#puma">The Puma</a>, a Catan bot that learned from 779 million positions of self-play, and I run the Google Cloud platform for OrgOS, an LLM research pipeline at Stanford's Graduate School of Business.</p>
+    <p class="facts">Stanford · coterminal M.S. Computer Science (AI), March 2028 · B.S. Symbolic Systems (AI), June 2027</p>
+    <div class="buttons">
+      <a class="btn btn-primary" href="John_Pumayalli_Resume.pdf">Resume (PDF)</a>
+      <a class="btn" href="https://github.com/johngpuma" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="mailto:johnpuma@stanford.edu">Email</a>
+      <a class="btn" href="https://linkedin.com/in/johnpumayalli" target="_blank" rel="noopener">LinkedIn</a>
     </div>
-    <aside class="now-card" aria-label="Currently">
-      <p class="now-label"><span class="pulse"></span>Now</p>
-      <ul class="now-list">
-        <li><strong>Software Engineer &amp; RA</strong>OrgOS, Stanford Graduate School of Business</li>
-        <li><strong>Section Leader</strong>Probability for AI, Stanford</li>
-        <li><a href="#puma" style="text-decoration:none"><strong>The Puma</strong>Self-play Catan bot trained on 779M positions ↓</a></li>
-        <li><strong>Open to Summer 2027</strong>Machine learning engineering internships</li>
-      </ul>
-    </aside>
   </div>
 </section>
 
 <!-- THE PUMA -->
 <section id="puma">
   <div class="container">
-    <p class="section-label">Featured project</p>
-    <div class="spot-grid">
+    <p class="label">Featured project</p>
+    <h2>The Puma</h2>
+    <p class="puma-kicker">A Catan 1v1 bot trained from scratch by self-play on one gaming PC.</p>
+
+    <div class="puma-grid">
       <div>
-        <h2 class="spot-title">The Puma</h2>
-        <p class="spot-kicker">A Catan bot that taught itself to play.</p>
-        <p class="spot-lede">
-          I trained a Catan 1v1 bot from scratch on my gaming PC. It never saw a human game and never copied another bot: it learned entirely by playing against itself, about four million games in two days of compute.
-        </p>
-        <div class="spot-stats">
-          <div class="spot-stat"><span class="stat-value">779M</span><span class="stat-label">training positions</span></div>
-          <div class="spot-stat"><span class="stat-value">4.0M</span><span class="stat-label">games against itself</span></div>
-          <div class="spot-stat"><span class="stat-value">46 h</span><span class="stat-label">of compute on one gaming PC</span></div>
-          <div class="spot-stat"><span class="stat-value">79%</span><span class="stat-label">win rate against people so far (11–3)</span></div>
-        </div>
+        <p class="prose">It never saw a human game. It learned only by playing against itself, about four million games in two days of compute, and now beats Catanatron's search bot 197 games out of 200 without searching at all.</p>
         <ul class="points">
-          <li><strong>How it thinks:</strong> a 279K-parameter graph neural network reads the board as a graph of corners and edges and predicts both the best move and who's winning. At play time, an AlphaZero-style tree search guided by that network runs about 1,000 simulations per move.</li>
-          <li><strong>How it learned:</strong> PPO over 2,885 iterations. A small shaping reward helped early games finish and faded to zero by iteration 200; after that, the only reward was winning. Average game length fell from 174 turns to 87 as it improved.</li>
-          <li><strong>The pipeline:</strong> 11 CPU workers play games in parallel and send positions through shared memory to one GPU process, which evaluates them in batches of about 130. It sustained 4,625 positions per second on a Ryzen 5 3600 and a GTX 1080.</li>
-          <li><strong>It plays fair:</strong> it sees only what a player at the table could know, never your hand or your development cards. You can play it best-of-five in a Colonist-style browser arena I built and open-sourced.</li>
+          <li><strong>Model:</strong> a 279K-parameter graph neural network over the board's corners and edges, predicting the best move and who's winning.</li>
+          <li><strong>Training:</strong> PPO from self-play; a shaping reward faded to zero by iteration 200, leaving winning as the only goal.</li>
+          <li><strong>Systems:</strong> 11 CPU workers feed one GPU through shared memory, batching about 130 positions per call.</li>
         </ul>
-        <div class="tech-list">
-          <span class="tech-chip">Python</span>
-          <span class="tech-chip">PyTorch</span>
-          <span class="tech-chip">Graph neural network</span>
-          <span class="tech-chip">PPO self-play</span>
-          <span class="tech-chip">AlphaZero-style search</span>
-          <span class="tech-chip">Multiprocessing</span>
-          <span class="tech-chip">Catanatron</span>
-        </div>
-        <div class="project-links">
-          <a class="btn btn-ghost" href="https://github.com/johngpuma/catan-1v1-arena" target="_blank" rel="noopener">Arena UI on GitHub ↗</a>
+        <div class="buttons" style="margin-top:1.5rem">
+          <a class="btn btn-primary" href="puma.html">Read the writeup</a>
+          <a class="btn" href="https://github.com/johngpuma/catan-1v1-arena" target="_blank" rel="noopener">Arena code ↗</a>
         </div>
       </div>
+      <figure>
+        <div class="shot"><img src="img/puma-arena.jpg" width="1400" height="693" alt="The Catan arena: a hex board of resource tiles with number tokens, a game log, the bank, and panels for The Puma and the human player." loading="lazy" /></div>
+        <figcaption class="cap">The browser arena I built for playing it.</figcaption>
+      </figure>
     </div>
 
-    <figure class="chart-card">
+    <div class="stats">
+      <div class="stat"><b>779M</b><span>training positions from about 4 million self-play games</span></div>
+      <div class="stat"><b>46 h</b><span>of compute on one Ryzen 5 3600 and a GTX 1080</span></div>
+      <div class="stat"><b>98.5%</b><span>win rate against Catanatron's AlphaBeta bot, network alone (197 of 200)</span></div>
+    </div>
+
+    <figure class="chart">
       <div class="chart-title">How often The Puma wins</div>
-      <p class="chart-sub">Share of games won against each opponent. Bars start at zero; whiskers are 95% intervals; the line marks an even 50%.</p>
+      <p class="chart-sub">Share of games won. Whiskers are 95% intervals; the line marks an even 50%.</p>
       <div class="bars">
-          <div class="bar-row" tabindex="0" aria-label="Catanatron AlphaBeta: 98.5% win rate. 197 of 200 games with no search at all. It won 195–200 of 200 at every one of 29 checkpoints from 389M to 769M positions.">
-            <div class="bar-name">Catanatron AlphaBeta<small>depth-2 search bot · Puma network alone</small></div>
-            <div class="bar-track" aria-hidden="true">
-              <span class="grid" style="left:25%"></span><span class="grid" style="left:75%"></span><span class="grid" style="left:100%"></span>
-              <span class="even" style="left:50%"></span>
-              <span class="bar-fill" style="width:98.5%"></span>
-              <span class="bar-ci" style="left:96.0%;width:3.5%"></span>
-            </div>
-            <div class="bar-val">98.5%</div>
-            <div class="bar-tip" role="tooltip">197 of 200 games with no search at all. It won 195–200 of 200 at every one of 29 checkpoints from 389M to 769M positions.</div>
-          </div>
-          <div class="bar-row" tabindex="0" aria-label="OpenHex ladder bot, rated 1462: 60.0% win rate. 120 of 200 games (±6.8 points). With the network alone and no search: 109 of 200 (54.5%).">
-            <div class="bar-name">OpenHex ladder bot, rated 1462<small>neural-network bot · 1 s of search a move</small></div>
-            <div class="bar-track" aria-hidden="true">
-              <span class="grid" style="left:25%"></span><span class="grid" style="left:75%"></span><span class="grid" style="left:100%"></span>
-              <span class="even" style="left:50%"></span>
-              <span class="bar-fill" style="width:60.0%"></span>
-              <span class="bar-ci" style="left:53.2%;width:13.6%"></span>
-            </div>
-            <div class="bar-val">60.0%</div>
-            <div class="bar-tip" role="tooltip">120 of 200 games (±6.8 points). With the network alone and no search: 109 of 200 (54.5%).</div>
-          </div>
-          <div class="bar-row" tabindex="0" aria-label="OpenHex search bot, rated ~1700: 52.0% win rate. 104 of 200 games (±6.9 points): an even match, within the margin.">
-            <div class="bar-name">OpenHex search bot, rated ~1700<small>its search capped below ladder strength</small></div>
-            <div class="bar-track" aria-hidden="true">
-              <span class="grid" style="left:25%"></span><span class="grid" style="left:75%"></span><span class="grid" style="left:100%"></span>
-              <span class="even" style="left:50%"></span>
-              <span class="bar-fill" style="width:52.0%"></span>
-              <span class="bar-ci" style="left:45.1%;width:13.8%"></span>
-            </div>
-            <div class="bar-val">52.0%</div>
-            <div class="bar-tip" role="tooltip">104 of 200 games (±6.9 points): an even match, within the margin.</div>
-          </div>
-          <div class="bar-row" tabindex="0" aria-label="Its own 389M-position self: 52.3% win rate. 314 of 600 games (±4.0 points): the finished bot against itself at half its training.">
-            <div class="bar-name">Its own 389M-position self<small>network alone · 600 games</small></div>
-            <div class="bar-track" aria-hidden="true">
-              <span class="grid" style="left:25%"></span><span class="grid" style="left:75%"></span><span class="grid" style="left:100%"></span>
-              <span class="even" style="left:50%"></span>
-              <span class="bar-fill" style="width:52.3%"></span>
-              <span class="bar-ci" style="left:48.3%;width:8.0%"></span>
-            </div>
-            <div class="bar-val">52.3%</div>
-            <div class="bar-tip" role="tooltip">314 of 600 games (±4.0 points): the finished bot against itself at half its training.</div>
-          </div>
+        <div class="bar-row" tabindex="0" aria-label="Catanatron AlphaBeta: 98.5 percent">
+          <div class="bar-name">Catanatron AlphaBeta<small>network alone, no search</small></div>
+          <div class="track" aria-hidden="true"><span class="grid" style="left:25%"></span><span class="grid" style="left:75%"></span><span class="grid" style="left:100%"></span><span class="even" style="left:50%"></span><span class="fill" style="width:98.5%"></span><span class="ci" style="left:96%;width:3.5%"></span></div>
+          <div class="val">98.5%</div>
+          <div class="tip" role="tooltip">197 of 200 games. 195–200 of 200 at all 29 checkpoints from 389M to 769M positions.</div>
+        </div>
+        <div class="bar-row" tabindex="0" aria-label="OpenHex ladder bot rated 1462: 60 percent">
+          <div class="bar-name">Ladder bot, rated 1462<small>1 s of search a move</small></div>
+          <div class="track" aria-hidden="true"><span class="grid" style="left:25%"></span><span class="grid" style="left:75%"></span><span class="grid" style="left:100%"></span><span class="even" style="left:50%"></span><span class="fill" style="width:60%"></span><span class="ci" style="left:53.2%;width:13.6%"></span></div>
+          <div class="val">60.0%</div>
+          <div class="tip" role="tooltip">120 of 200 games (±6.8 points) against a neural-network bot from the OpenHex ladder.</div>
+        </div>
+        <div class="bar-row" tabindex="0" aria-label="OpenHex search bot rated about 1700: 52 percent">
+          <div class="bar-name">Search bot, rated ~1700<small>its search capped</small></div>
+          <div class="track" aria-hidden="true"><span class="grid" style="left:25%"></span><span class="grid" style="left:75%"></span><span class="grid" style="left:100%"></span><span class="even" style="left:50%"></span><span class="fill" style="width:52%"></span><span class="ci" style="left:45.1%;width:13.8%"></span></div>
+          <div class="val">52.0%</div>
+          <div class="tip" role="tooltip">104 of 200 games (±6.9 points): an even match.</div>
+        </div>
       </div>
       <div class="axis" aria-hidden="true">
         <div></div>
-        <div class="axis-ticks"><span style="left:0%">0%</span><span style="left:25%">25%</span><span class="even-label" style="left:50%">50% even</span><span style="left:75%">75%</span><span style="left:100%">100%</span></div>
+        <div class="ticks"><span style="left:0%">0%</span><span style="left:25%">25%</span><span style="left:50%">50%</span><span style="left:75%">75%</span><span style="left:100%">100%</span></div>
         <div></div>
       </div>
-      <figcaption class="chart-foot">
-        Matches were 200 games on 100 boards with seats swapped (600 for the self-match), measured on the same PC. OpenHex games were refereed by the opponent's own engine. Hover or tab to a row for the raw counts.
-        <details>
-          <summary>Show as a table</summary>
-          <table class="chart-table">
-            <thead><tr><th>Opponent</th><th>Setup</th><th>Win rate</th><th>95% interval</th></tr></thead>
-            <tbody><tr><td>Catanatron AlphaBeta</td><td>depth-2 search bot · Puma network alone</td><td>98.5%</td><td>96.0–99.5%</td></tr><tr><td>OpenHex ladder bot, rated 1462</td><td>neural-network bot · 1 s of search a move</td><td>60.0%</td><td>53.2–66.8%</td></tr><tr><td>OpenHex search bot, rated ~1700</td><td>its search capped below ladder strength</td><td>52.0%</td><td>45.1–58.9%</td></tr><tr><td>Its own 389M-position self</td><td>network alone · 600 games</td><td>52.3%</td><td>48.3–56.3%</td></tr></tbody>
-          </table>
-        </details>
-      </figcaption>
+      <figcaption class="chart-foot">200-game matches on 100 boards with seats swapped. Method, the self-match, and a table are in the <a href="puma.html#results">writeup</a>.</figcaption>
     </figure>
   </div>
 </section>
 
-<!-- PROJECTS -->
-<section id="projects">
+<!-- SELECTED WORK -->
+<section id="work">
   <div class="container">
-    <p class="section-label">Work</p>
-    <h2>Projects</h2>
+    <p class="label">Selected work</p>
+    <h2>Other projects</h2>
+    <div class="rows">
 
-    <div class="projects-grid">
-
-      <!-- OrgOS -->
-      <div class="project-card wide">
-        <div class="project-header">
-          <span class="project-title">Infrastructure for an Organizational Intelligence Platform — OrgOS</span>
-          <span class="project-tag tag-work">Current</span>
-        </div>
-        <p class="project-desc">
-          OrgOS turns a company's Slack and meeting transcripts into workstreams, decisions, and owners. I build and run its Google Cloud infrastructure across dev, production, and a Stanford research environment.
-        </p>
-        <ul class="points">
-          <li>Cloud Run services on PostgreSQL, with per-company row-level security and encryption keys, and people de-identified before anything is stored</li>
-          <li>Per-pull-request preview environments: each PR gets its own backend, AI agent, and frontend on a sanitized database clone</li>
-          <li>A release pipeline that promotes the exact images dev is running, checks the schema before rolling, and verifies the copy</li>
-          <li>A measured cost audit of the always-on services</li>
-        </ul>
-        <div class="tech-list">
-          <span class="tech-chip">Python</span>
-          <span class="tech-chip">Cloud Run</span>
-          <span class="tech-chip">Cloud SQL / PostgreSQL</span>
-          <span class="tech-chip">Cloud KMS</span>
-          <span class="tech-chip">Terraform</span>
-          <span class="tech-chip">GitHub Actions</span>
-          <span class="tech-chip">Vertex AI</span>
-        </div>
-      </div>
-
-      <!-- SymSys research poster -->
-      <div class="project-card">
-        <div class="project-header">
-          <span class="project-title">Sharing Internal Company Data Safely for Organizational Research</span>
-          <span class="project-tag tag-featured">Research</span>
-        </div>
-        <p class="project-desc">
-          Symbolic Systems research poster with the Stanford Graduate School of Business (Macro Organizational Behavior). The question: can a small academic team let a company of any size share its Slack and meeting data continuously while keeping it private?
-        </p>
-        <ul class="points">
-          <li>People are replaced with tokens before anything is stored</li>
-          <li>Analysis and language models see only de-identified data, inside one university-controlled Google Cloud project</li>
-          <li>Real names come back only in the company's own dashboard, and every re-identification is logged</li>
-        </ul>
-        <div class="tech-list">
-          <span class="tech-chip">Python</span>
-          <span class="tech-chip">Cloud Run</span>
-          <span class="tech-chip">Cloud SQL / PostgreSQL</span>
-          <span class="tech-chip">Cloud KMS</span>
-          <span class="tech-chip">Row-level security</span>
-          <span class="tech-chip">Terraform</span>
-        </div>
-        <div class="project-links">
-          <a class="btn btn-ghost" href="SymSys_Poster_Sharing_Internal_Data.pdf" target="_blank" rel="noopener">View poster ↗</a>
-        </div>
-      </div>
-
-      <!-- COMM 324 paper -->
-      <div class="project-card">
-        <div class="project-header">
-          <span class="project-title">Talking to the Machine Teammate</span>
-          <span class="project-tag tag-featured">Research</span>
-        </div>
-        <p class="project-desc">
-          Research paper for COMM 324 (Prof. Jeff Hancock) on how human code reviewers treat AI coding agents.
-        </p>
-        <ul class="points">
-          <li>Analyzed 7.7M agent-authored pull requests across 2,800+ GitHub repositories in Python</li>
-          <li>Agent-authored PRs merge 6.4 points less often than human PRs (p = .008)</li>
-          <li>Most of that gap comes from agents that post under bot accounts</li>
-        </ul>
-        <div class="tech-list">
-          <span class="tech-chip">Python</span>
-          <span class="tech-chip">pandas</span>
-          <span class="tech-chip">GitHub API</span>
-          <span class="tech-chip">Statistical analysis</span>
-        </div>
-      </div>
-
-      <!-- CS229 Catan -->
-      <div class="project-card featured wide">
-        <div class="project-header">
-          <span class="project-title">Beyond Pip Counting: Interpretable ML for Catan Opening Placement</span>
-          <span class="project-tag tag-featured">CS229</span>
-        </div>
-        <p class="project-desc">
-          Can supervised learning beat the "pip-counting" heuristic at predicting who wins a game of Settlers of Catan from the opening placement? Trained on ~100K simulated games.
-        </p>
-        <ul class="points">
-          <li>52 engineered features covering resource scarcity, opponent competition, turn order, and strategic engines</li>
-          <li>XGBoost, logistic regression, and an MLP compared against a pip-count baseline</li>
-          <li>SHAP explanations distilled into eight human-readable rules</li>
-        </ul>
-        <div class="stat-row">
-          <div class="stat-pill">
-            <span class="stat-value">0.73</span>
-            <span class="stat-label">Model AUC</span>
-          </div>
-          <div class="stat-pill">
-            <span class="stat-value">0.54</span>
-            <span class="stat-label">Pip-only AUC</span>
-          </div>
-          <div class="stat-pill">
-            <span class="stat-value">~100K</span>
-            <span class="stat-label">Simulated games</span>
-          </div>
-          <div class="stat-pill">
-            <span class="stat-value">62%</span>
-            <span class="stat-label">Edge in 8 rules</span>
+      <article class="row">
+        <div class="when">CS 229 · 2026</div>
+        <div>
+          <h3>Beyond Pip Counting: Interpretable ML for Catan Openings</h3>
+          <p class="result">A learned model beats the standard heuristic at predicting who wins from the opening: <strong>AUC 0.73 vs. 0.54</strong> on ~100K simulated games.</p>
+          <ul class="points">
+            <li>52 features (resource scarcity, turn order, opponent overlap), split by game so no game leaks across train and test.</li>
+            <li>Compared logistic regression, XGBoost, an MLP and SVMs; scored with AUC and Brier score for calibration.</li>
+            <li>Explained with SHAP and distilled into 8 human-readable rules that keep 62% of the model's edge.</li>
+          </ul>
+          <div class="meta">
+            <span class="links"><a href="CS229_Catan_Final_Report.pdf">Paper</a><a href="CS229_Catan_Poster.pdf">Poster</a></span>
+            <span class="chips"><span class="chip">Python</span><span class="chip">XGBoost</span><span class="chip">SHAP</span><span class="chip">scikit-learn</span></span>
           </div>
         </div>
-        <div class="tech-list">
-          <span class="tech-chip">Python</span>
-          <span class="tech-chip">XGBoost</span>
-          <span class="tech-chip">Logistic Regression</span>
-          <span class="tech-chip">MLP</span>
-          <span class="tech-chip">SHAP</span>
-          <span class="tech-chip">k-means</span>
-          <span class="tech-chip">Catanatron</span>
-        </div>
-        <div class="project-links">
-          <a class="btn btn-ghost" href="CS229_Catan_Final_Report.pdf" target="_blank" rel="noopener">Read paper ↗</a>
-          <a class="btn btn-ghost" href="CS229_Catan_Poster.pdf" target="_blank" rel="noopener">View poster ↗</a>
-        </div>
-      </div>
+      </article>
 
-      <!-- Catan 1v1 analyzer -->
-      <div class="project-card">
-        <div class="project-header">
-          <span class="project-title">Catan 1v1 Post-Game Analyzer</span>
-          <span class="project-tag tag-featured">Side project</span>
+      <article class="row">
+        <div class="when">Stanford GSB<br>2026–now</div>
+        <div>
+          <h3>OrgOS: infrastructure for an LLM research pipeline</h3>
+          <p class="result">The Google Cloud platform behind a system that turns a company's Slack and meetings into <strong>workstreams, decisions and owners</strong>.</p>
+          <ul class="points">
+            <li>Cloud Run and PostgreSQL across dev, production and a research environment, with per-company row-level security and people de-identified before storage.</li>
+            <li>Per-pull-request preview environments: every PR gets its own backend, AI agent and frontend on a sanitized database clone.</li>
+            <li>A release pipeline that promotes the exact images dev runs, plus a measured cost audit of the always-on services.</li>
+          </ul>
+          <div class="meta">
+            <span class="links"><a href="SymSys_Poster_Sharing_Internal_Data.pdf">Research poster</a></span>
+            <span class="chips"><span class="chip">Google Cloud</span><span class="chip">Terraform</span><span class="chip">PostgreSQL</span><span class="chip">GitHub Actions</span></span>
+          </div>
         </div>
-        <p class="project-desc">
-          Post-game review for 1v1 Colonist.io matches, with no live assistance.
-        </p>
-        <ul class="points">
-          <li>A Chrome extension records games by decoding the site's WebSocket / MessagePack protocol</li>
-          <li>A translator maps its 54-vertex, 72-edge board onto the Catanatron rules engine</li>
-          <li>Seeded Monte Carlo rollouts score every decision by win probability, flag significant blunders, and show the move the engine would have made</li>
-        </ul>
-        <div class="tech-list">
-          <span class="tech-chip">JavaScript</span>
-          <span class="tech-chip">Python</span>
-          <span class="tech-chip">MessagePack</span>
-          <span class="tech-chip">Chrome Extension (MV3)</span>
-          <span class="tech-chip">Catanatron</span>
-          <span class="tech-chip">Monte-Carlo rollouts</span>
-        </div>
-        <div class="project-links">
-          <a class="btn btn-ghost" href="https://catan-bot-two.vercel.app/" target="_blank" rel="noopener">Try the analyzer ↗</a>
-        </div>
-      </div>
+      </article>
 
-      <!-- Flourish -->
-      <div class="project-card">
-        <div class="project-header">
-          <span class="project-title">Health Data Visualization App — Flourish</span>
-          <span class="project-tag tag-work">Internship</span>
+      <article class="row">
+        <div class="when">COMM 324 · 2026</div>
+        <div>
+          <h3>Talking to the Machine Teammate</h3>
+          <p class="result">Across <strong>7.7M agent-authored pull requests</strong>, agent PRs merge 6.4 points less often than human PRs (p = .008).</p>
+          <ul class="points">
+            <li>Research paper for Prof. Jeff Hancock on how human reviewers treat AI coding agents, across 2,800+ repositories.</li>
+            <li>Most of the gap comes from agents that post under bot accounts.</li>
+          </ul>
+          <div class="meta">
+            <span class="chips"><span class="chip">Python</span><span class="chip">pandas</span><span class="chip">Statistics</span></span>
+          </div>
         </div>
-        <p class="project-desc">
-          A mobile app that helps people with chronic conditions track their health data and share it with their doctors.
-        </p>
-        <ul class="points">
-          <li>Built the front end, including data visualizations of each patient's health over time</li>
-          <li>Worked with the UI/UX team on the interface</li>
-          <li>Contributed to the Node.js and MongoDB backend</li>
-        </ul>
-        <div class="tech-list">
-          <span class="tech-chip">React Native</span>
-          <span class="tech-chip">Node.js</span>
-          <span class="tech-chip">MongoDB</span>
+      </article>
+
+      <article class="row">
+        <div class="when">Side project · 2026</div>
+        <div>
+          <h3>Colonist 1v1 Post-Game Analyzer</h3>
+          <p class="result">Replays a finished online game and <strong>scores every move by win probability</strong>, flagging blunders. Post-game only.</p>
+          <ul class="points">
+            <li>A Chrome extension records games by decoding the site's WebSocket / MessagePack traffic.</li>
+            <li>Maps the 54-corner, 72-edge board onto the Catanatron engine; seeded Monte Carlo rollouts score each decision.</li>
+          </ul>
+          <div class="meta">
+            <span class="links"><a href="https://catan-bot-two.vercel.app/" target="_blank" rel="noopener">Try it ↗</a></span>
+            <span class="chips"><span class="chip">JavaScript</span><span class="chip">Python</span><span class="chip">Monte Carlo</span></span>
+          </div>
         </div>
-      </div>
+      </article>
 
     </div>
   </div>
@@ -953,222 +201,60 @@
 <!-- EXPERIENCE -->
 <section id="experience">
   <div class="container">
-    <p class="section-label">Background</p>
+    <p class="label">Background</p>
     <h2>Experience</h2>
-
-    <div class="timeline">
-    <div class="exp-item current">
-      <div class="exp-role">Software Engineer and Research Assistant</div>
-      <div class="exp-date">Mar 2026 – Present</div>
-      <div class="exp-org">Stanford Graduate School of Business · Stanford, CA</div>
-      <div class="exp-desc">Research assistant to Prof. Julien Clement (Macro Organizational Behavior) on OrgOS, an LLM pipeline that maps a company's teams, workstreams, and decisions from its Slack conversations.</div>
-      <ul class="points">
-        <li>Build and run the platform on Google Cloud (Cloud Run, Postgres with pgvector, KMS), managed with Terraform across development, production, and research environments</li>
-        <li>Built per-pull-request preview environments in GitHub Actions</li>
-        <li>Hardened production access so customer data stays private, and led cost and performance work across the stack</li>
-      </ul>
+    <div class="rows">
+      <article class="row">
+        <div class="when">Mar 2026 – now</div>
+        <div>
+          <h3>Software Engineer and Research Assistant</h3>
+          <p class="where">Stanford Graduate School of Business · Prof. Julien Clement</p>
+          <p class="result">I build and run the OrgOS platform described above, managed with Terraform, and lead its cost, performance and access-control work.</p>
+        </div>
+      </article>
+      <article class="row">
+        <div class="when">Oct 2026 – now</div>
+        <div>
+          <h3>Section Leader, Probability for AI</h3>
+          <p class="where">Stanford University · Chris Piech and Mehran Sahami</p>
+          <p class="result">I lead a weekly live section of a free Stanford course on the math behind modern AI, for learners around the world.</p>
+        </div>
+      </article>
+      <article class="row">
+        <div class="when">Summer 2022</div>
+        <div>
+          <h3>Front End Developer</h3>
+          <p class="where">Flourish · Dartmouth, NH</p>
+          <p class="result">Built the front end of a mobile app that helps people with chronic conditions track their health and share it with doctors (React Native, Node.js, MongoDB).</p>
+        </div>
+      </article>
+      <article class="row">
+        <div class="when">Summer 2021</div>
+        <div>
+          <h3>Research Assistant</h3>
+          <p class="where">Colorado School of Mines · Dr. Chuan Yue</p>
+          <p class="result">Reverse-engineered the Grammarly browser extension with a student team to find and evaluate privacy and security vulnerabilities.</p>
+        </div>
+      </article>
     </div>
+    <p class="also"><strong>Also:</strong> Counselor at Stanford Sierra Camp (2025) · Assistant/IT at the Telluride Science &amp; Innovation Center (summers 2021–24) · Alumni Chair, Sigma Phi Epsilon · Performer with Mestiza Qoyllacha, an Indigenous dance collective in Peru's Sacred Valley (2012–now). Spanish and English native, Italian intermediate.</p>
 
-    <div class="exp-item current">
-      <div class="exp-role">Section Leader, Probability for AI</div>
-      <div class="exp-date">Oct 2026 – Present</div>
-      <div class="exp-org">Stanford University · Remote</div>
-      <div class="exp-desc">Lead a weekly live section of Probability for AI, a free Stanford course taught by Chris Piech and Mehran Sahami that teaches the mathematics behind modern AI to learners around the world.</div>
-    </div>
-
-    <div class="exp-item">
-      <div class="exp-role">Counselor</div>
-      <div class="exp-date">Jun – Sep 2025</div>
-      <div class="exp-org">Stanford Sierra Camp · South Lake Tahoe, CA</div>
-      <div class="exp-desc">Designed and led daily programming for 300+ guests per week over a 13-week season.</div>
-    </div>
-
-    <div class="exp-item">
-      <div class="exp-role">Assistant / IT</div>
-      <div class="exp-date">Summers 2021 – 2024</div>
-      <div class="exp-org">Telluride Science &amp; Innovation Center · Telluride, CO</div>
-      <div class="exp-desc">Supported visiting researchers and staff with computer and network setup, troubleshooting, and meeting logistics during summer research workshops.</div>
-    </div>
-
-    <div class="exp-item">
-      <div class="exp-role">Front End Developer</div>
-      <div class="exp-date">Jun – Sep 2022</div>
-      <div class="exp-org">Flourish · Dartmouth, NH</div>
-      <div class="exp-desc">Built the front end of a mobile app that helps people with chronic conditions track their health data and share it with doctors. Worked with the UI/UX team and contributed to the backend in React Native, Node.js, and MongoDB.</div>
-    </div>
-
-    <div class="exp-item">
-      <div class="exp-role">Research Assistant</div>
-      <div class="exp-date">Jun – Sep 2021</div>
-      <div class="exp-org">Colorado School of Mines · Golden, CO</div>
-      <div class="exp-desc">Reverse-engineered the Grammarly browser extension with a student team under Dr. Chuan Yue, identifying and evaluating privacy breaches and cybersecurity vulnerabilities.</div>
-    </div>
-
-    </div>
-
-    <p class="section-label sub-label">Leadership &amp; Activities</p>
-
-    <div class="timeline">
-
-    <div class="exp-item">
-      <div class="exp-role">Alumni Chair</div>
-      <div class="exp-date">Sep 2024 – Present</div>
-      <div class="exp-org">Sigma Phi Epsilon · Stanford, CA</div>
-      <div class="exp-desc">Formerly Social Chair and Head of Member Development.</div>
-    </div>
-
-    <div class="exp-item">
-      <div class="exp-role">Member &amp; Performer</div>
-      <div class="exp-date">2012 – Present</div>
-      <div class="exp-org">Mestiza Qoyllacha · Sacred Valley, Peru</div>
-      <div class="exp-desc">Perform each year with an Indigenous dance collective in Peru's Sacred Valley, building cross-cultural communication and teamwork.</div>
-    </div>
-
+    <div class="edu">
+      <h3>Education</h3>
+      <p>Stanford University: coterminal M.S. in Computer Science, AI specialization (expected March 2028), and B.S. in Symbolic Systems, AI concentration (expected June 2027, GPA 3.61). Courses include Machine Learning (CS 229), Artificial Intelligence (CS 221), Decision Making under Uncertainty (CS 238), Algorithms (CS 161) and Probability (CS 109).</p>
     </div>
   </div>
 </section>
 
-<!-- EDUCATION -->
-<section id="education">
-  <div class="container">
-    <p class="section-label">Academic</p>
-    <h2>Education</h2>
-
-    <div class="edu-list">
-    <div class="edu-block">
-      <div>
-        <div class="edu-school">Stanford University</div>
-        <div class="edu-degree">MS Computer Science (Coterminal) — Artificial Intelligence Specialization</div>
-      </div>
-      <div class="edu-meta">Expected Mar 2028<br>Stanford, CA</div>
-    </div>
-
-    <div class="edu-block">
-      <div>
-        <div class="edu-school">Stanford University</div>
-        <div class="edu-degree">BS Symbolic Systems — Artificial Intelligence Concentration · GPA 3.61</div>
-        <div class="edu-courses">
-          <p class="edu-courses-label">Selected coursework</p>
-          <ul class="course-list">
-            <li>Machine Learning (CS 229)</li>
-            <li>Artificial Intelligence (CS 221)</li>
-            <li>Decision Making under Uncertainty (CS 238)</li>
-            <li>Design and Analysis of Algorithms (CS 161)</li>
-            <li>Probability for Computer Scientists (CS 109)</li>
-            <li>Mathematical Foundations</li>
-            <li>Mathematical Logic</li>
-            <li>Computer Organization</li>
-            <li>Philosophy of AI</li>
-            <li>Minds &amp; Machines</li>
-            <li>Semantics &amp; Pragmatics</li>
-          </ul>
-        </div>
-      </div>
-      <div class="edu-meta">Expected Jun 2027<br>Stanford, CA</div>
-    </div>
-
-    <div class="edu-block">
-      <div>
-        <div class="edu-school">Telluride High School</div>
-        <div class="edu-degree">GPA 4.34 · Magna Cum Laude · Ronald Reagan Leadership Medal</div>
-      </div>
-      <div class="edu-meta">Jun 2023<br>Telluride, CO</div>
-    </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- SKILLS -->
-<section id="skills">
-  <div class="container">
-    <p class="section-label">Toolkit</p>
-    <h2>Skills</h2>
-    <div class="skills-grid">
-      <div>
-        <div class="skill-group-label">Languages</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Python</span>
-          <span class="skill-tag">C++</span>
-          <span class="skill-tag">JavaScript</span>
-          <span class="skill-tag">Java</span>
-          <span class="skill-tag">Swift</span>
-          <span class="skill-tag">HTML/CSS</span>
-          <span class="skill-tag">SQL</span>
-          <span class="skill-tag">Bash</span>
-        </div>
-      </div>
-      <div>
-        <div class="skill-group-label">Spoken</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Spanish (native)</span>
-          <span class="skill-tag">English (native)</span>
-          <span class="skill-tag">Italian (intermediate)</span>
-        </div>
-      </div>
-      <div>
-        <div class="skill-group-label">ML / AI</div>
-        <div class="skill-tags">
-          <span class="skill-tag">XGBoost</span>
-          <span class="skill-tag">scikit-learn</span>
-          <span class="skill-tag">SHAP</span>
-          <span class="skill-tag">pandas</span>
-          <span class="skill-tag">NumPy</span>
-          <span class="skill-tag">LLM APIs (Gemini, Claude, Vertex AI)</span>
-          <span class="skill-tag">Logistic regression</span>
-          <span class="skill-tag">k-means</span>
-        </div>
-      </div>
-      <div>
-        <div class="skill-group-label">Infrastructure</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Google Cloud (Cloud Run, Cloud SQL, KMS, IAM)</span>
-          <span class="skill-tag">Terraform</span>
-          <span class="skill-tag">GitHub Actions</span>
-          <span class="skill-tag">Docker</span>
-          <span class="skill-tag">PostgreSQL / pgvector</span>
-          <span class="skill-tag">MongoDB</span>
-        </div>
-      </div>
-      <div>
-        <div class="skill-group-label">Frameworks</div>
-        <div class="skill-tags">
-          <span class="skill-tag">React</span>
-          <span class="skill-tag">React Native</span>
-          <span class="skill-tag">Node.js</span>
-          <span class="skill-tag">Figma</span>
-          <span class="skill-tag">CAD</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+</main>
 
 <footer>
-  <div class="container footer-inner">
+  <div class="container foot">
     <span>© 2026 John Pumayalli</span>
-    <span><a href="mailto:johnpuma@stanford.edu">johnpuma@stanford.edu</a> · <a href="https://github.com/johngpuma" target="_blank" rel="noopener">GitHub</a> · <a href="https://linkedin.com/in/johnpumayalli" target="_blank" rel="noopener">LinkedIn</a></span>
+    <nav aria-label="Contact"><a href="mailto:johnpuma@stanford.edu">Email</a><a href="https://github.com/johngpuma" target="_blank" rel="noopener">GitHub</a><a href="https://linkedin.com/in/johnpumayalli" target="_blank" rel="noopener">LinkedIn</a><a href="John_Pumayalli_Resume.pdf">Resume</a></nav>
   </div>
 </footer>
 
-<script>
-  (function () {
-    var root = document.documentElement;
-    var btn = document.getElementById('theme-toggle');
-    var meta = document.querySelector('meta[name="theme-color"]');
-    function apply(t) {
-      root.setAttribute('data-theme', t);
-      btn.setAttribute('aria-label', t === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
-      if (meta) meta.setAttribute('content', t === 'dark' ? '#0d1117' : '#faf9f6');
-    }
-    apply(root.getAttribute('data-theme') || 'light');
-    btn.addEventListener('click', function () {
-      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      apply(next);
-      try { localStorage.setItem('theme', next); } catch (e) {}
-    });
-  })();
-</script>
-
+<script src="theme.js"></script>
 </body>
 </html>
