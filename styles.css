@@ -136,6 +136,9 @@ h3 { font-size: 1.06rem; font-weight: 600; line-height: 1.35; letter-spacing: -0
 .puma-kicker { font-size: 1.1rem; color: var(--text-2); margin: -0.9rem 0 1.2rem; }
 .shot { border-radius: 12px; overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow); background: #2f6cb4; }
 .shot img { display: block; width: 100%; height: auto; }
+a.shot { display: block; transition: border-color 0.15s ease, transform 0.15s ease; }
+a.shot:hover { border-color: var(--accent-line); transform: translateY(-2px); }
+.play-note { font-size: 0.82rem; line-height: 1.45; color: var(--text-3); margin-top: 0.7rem; max-width: 46ch; }
 figure figcaption.cap { font-size: 0.8rem; color: var(--text-3); margin-top: 0.55rem; }
 .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.9rem; margin: 2.2rem 0; }
 .stat { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 1.1rem 1.2rem; box-shadow: var(--shadow); }
